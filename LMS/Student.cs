@@ -272,7 +272,7 @@ namespace LMS
 
 
 
-                string sql = "INSERT INTO [students] ([first_name],[last_name],[full_name],[gender],[date_of_birth],[admission_no],[stu_nic_no],[telephone_no],[address],[grade_id],[medium],[date_of_admission],[created_at])VALUES('" + txtFirstName.Text + "','" + txtLastName.Text + "','" + txtFullName.Text + "','" + Gender + "','" + dtpDob.Text + "','" + txtAdmissionNo.Text + "','" + txtNicNo.Text + "','" + txtTelephoneNo.Text + "','" + txtAddress.Text + "','" + cmbGradeId.SelectedItem.ToString() + "','" + txtMedium.Text + "','" + dtpDateofAdmission.Text + "','"+DateTime.Now+"' )";
+                string sql = "INSERT INTO [students] ([first_name],[last_name],[full_name],[gender],[date_of_birth],[admission_no],[stu_nic_no],[telephone_no],[address],[grade_id],[medium],[date_of_admission],[created_at])VALUES('" + txtFirstName.Text + "','" + txtLastName.Text + "','" + txtFullName.Text + "','" + Gender + "','" + dtpDob.Text + "','" + txtAdmissionNo.Text + "','" + txtNicNo.Text + "','" + txtTelephoneNo.Text + "','" + txtAddress.Text + "','" + (cmbGradeId.SelectedItem as dynamic).Value + "','" + txtMedium.Text + "','" + dtpDateofAdmission.Text + "','"+DateTime.Now+"' )";
                 cnn = new SqlConnection(connetionString);
                 try
                 {
