@@ -11,34 +11,12 @@ using System.Windows.Forms;
 
 namespace LMS
 {
-    public partial class Grade : Form
+    public partial class GradeSubject : Form
     {
         string id = null;
-        public Grade()
+        public GradeSubject()
         {
             InitializeComponent();
-        }
-
-        private void btnDataInsert_Click(object sender, EventArgs e)
-        {
-            string connetionString = null;
-            SqlConnection cnn = new SqlConnection(connetionString);
-            connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
-            SqlCommand command;
-            string sql = "INSERT INTO [grades] ([grade_name],[grade_group],[grade_order])VALUES('Two','2A','2A02')";
-            cnn = new SqlConnection(connetionString);
-            try
-            {
-                cnn.Open();
-                command = new SqlCommand(sql, cnn);
-                command.ExecuteNonQuery();
-                MessageBox.Show("Connection Open ! ");
-                cnn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Can not open connection ! ");
-            }
         }
 
         private void btnGetData_Click(object sender, EventArgs e)
@@ -47,7 +25,7 @@ namespace LMS
             connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
             SqlConnection cnn = new SqlConnection(connetionString);
             SqlCommand command;
-            string sql = "select * from grades";
+            string sql = "select * from grade_subjects";
 
             try
             {
@@ -62,7 +40,7 @@ namespace LMS
 
                 dt.Load(sqlReader);
 
-                dgvGrade.DataSource = dt;
+                dgvGradeSubject.DataSource = dt;
                 sqlReader.Close();
                 command.Dispose();
                 cnn.Close();
@@ -80,7 +58,7 @@ namespace LMS
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            string id = dgvGrade.SelectedRows[0].Cells["id"].Value.ToString();
+            string id = dgvGradeSubject.SelectedRows[0].Cells["id"].Value.ToString();
             DialogResult dr = MessageBox.Show("Do you want to Delete?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.No)
             {
@@ -90,14 +68,14 @@ namespace LMS
             SqlConnection cnn = new SqlConnection(connetionString);
             connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
             SqlCommand command;
-            string sql = "DELETE FROM grades WHERE id ='" + id + "'";
+            string sql = "DELETE FROM grade_subjects WHERE id ='" + id + "'";
             cnn = new SqlConnection(connetionString);
             try
             {
                 cnn.Open();
                 command = new SqlCommand(sql, cnn);
                 command.ExecuteNonQuery();
-                MessageBox.Show("Connection Open ! ");
+                MessageBox.Show("Student details successfully deleted ");
                 cnn.Close();
             }
             catch (Exception ex)
@@ -113,6 +91,15 @@ namespace LMS
             this.Hide();
         }
 
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            this.id = null;
+            cmbSubjectId.Text = null;
+            cmbSubjectId.Text = null;
+            btnUpdate.Text = "Save";
+
+        }
+
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             if (cmbSearch.SelectedIndex == -1)
@@ -124,7 +111,7 @@ namespace LMS
             connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
             SqlConnection cnn = new SqlConnection(connetionString);
             SqlCommand command;
-            string sql = "select * from grades where " + cmbSearch.SelectedItem.ToString() + " like '%" + txtSearch.Text + "%'";
+            string sql = "select * from grade_subjects where " + cmbSearch.SelectedItem.ToString() + " like '%" + txtSearch.Text + "%'";
 
             try
             {
@@ -137,7 +124,7 @@ namespace LMS
                 // }
                 DataTable dt = new DataTable();
                 dt.Load(sqlReader);
-                dgvGrade.DataSource = dt;
+                dgvGradeSubject.DataSource = dt;
                 sqlReader.Close();
                 command.Dispose();
                 cnn.Close();
@@ -172,30 +159,6 @@ namespace LMS
             cmbSearch.SelectedIndex = -1;
         }
 
-        private void dgvGrade_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dgvGrade.SelectedRows.Count > 0)
-            {
-                btnUpdate.Text = "Update";
-                DataGridViewRow selectedRows = dgvGrade.SelectedRows[0];
-
-                this.id = selectedRows.Cells["id"].Value.ToString();
-                string gradename = selectedRows.Cells["grade_name"].Value.ToString();
-                string gradegroup = selectedRows.Cells["grade_group"].Value.ToString();
-                string gradeorder = selectedRows.Cells["grade_order"].Value.ToString();
-
-
-                txtGradeName.Text = gradename;
-                txtGradeGroup.Text = gradegroup;
-                txtGradeOrder.Text = gradeorder;
-            }
-        }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (btnUpdate.Text == "Save")
@@ -205,14 +168,14 @@ namespace LMS
                 SqlConnection cnn = new SqlConnection(connetionString);
                 connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlCommand command;
-                string sql = "INSERT INTO [grades] ([grade_name],[grade_order],[grade_group],[created_at])VALUES('" + txtGradeName.Text + "','" + txtGradeOrder.Text + "','" + txtGradeGroup.Text + "','" + DateTime.Now + "' )";
+                string sql = "INSERT INTO [grade_subjects] ([subject_id],[grade_id],[created_at])VALUES('" + cmbSubjectId.Text + "','" + cmbGradeId.Text + "','" + DateTime.Now + "' )";
                 cnn = new SqlConnection(connetionString);
                 try
                 {
                     cnn.Open();
                     command = new SqlCommand(sql, cnn);
                     command.ExecuteNonQuery();
-                    MessageBox.Show("Connection Open ! ");
+                    MessageBox.Show("Student detail successfully added ");
                     cnn.Close();
                 }
                 catch (Exception ex)
@@ -227,37 +190,39 @@ namespace LMS
                 SqlConnection cnn = new SqlConnection(connetionString);
                 connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlCommand command;
-                string sql = "UPDATE [grades] SET [grade_name]='" + txtGradeName.Text + "',[grade_order]='" + txtGradeOrder.Text + "',[grade_group]='" + txtGradeGroup.Text + "',[updated_at] = '" + DateTime.Now + "'  WHERE [id]='" + this.id + "'";
+                string sql = "UPDATE [grade_subjects] SET [subject_id]='" + cmbSubjectId.Text + "',[grade_id]='" + cmbGradeId.Text + "',[updated_at] = '" + DateTime.Now + "' WHERE [id]='" + this.id + "'";
                 cnn = new SqlConnection(connetionString);
                 try
                 {
                     cnn.Open();
                     command = new SqlCommand(sql, cnn);
                     command.ExecuteNonQuery();
-                    MessageBox.Show("Connection Open ! ");
+                    MessageBox.Show("Student details successfully updated");
                     cnn.Close();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Can not open connection ! ");
                 }
+
             }
         }
 
-        private void btnNew_Click(object sender, EventArgs e)
+        private void dgvGradeSubject_SelectionChanged(object sender, EventArgs e)
         {
-            this.id = null;
-            txtGradeName.Text = null;
-            txtGradeGroup.Text = null;
-            txtGradeOrder.Text = null;
-            btnUpdate.Text = "Save";
-        }
+            if (dgvGradeSubject.SelectedRows.Count > 0)
+            {
+                btnUpdate.Text = "Update";
+                DataGridViewRow selectedRows = dgvGradeSubject.SelectedRows[0];
 
-        private void btnGradeSubjects_Click(object sender, EventArgs e)
-        {
-            GradeSubject gradeSubject = new GradeSubject();
-            gradeSubject.Show();
-            this.Hide();
+                this.id = selectedRows.Cells["id"].Value.ToString();
+                string subjectid = selectedRows.Cells["subject_id"].Value.ToString();
+                string gradeid = selectedRows.Cells["grade_id"].Value.ToString();
+
+
+                cmbSubjectId.Text = subjectid;
+                cmbGradeId.Text = gradeid;
+            }
         }
     }
 }
