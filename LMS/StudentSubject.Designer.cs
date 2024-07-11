@@ -44,6 +44,7 @@
             txtAdmisionNo = new Label();
             btnUpdate = new Button();
             lblFirstName = new Label();
+            label1 = new Label();
             gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStudentSubject).BeginInit();
             SuspendLayout();
@@ -52,6 +53,7 @@
             // 
             gradientPanel1.ColorBottom = Color.FromArgb(4, 87, 122);
             gradientPanel1.ColorTop = Color.Teal;
+            gradientPanel1.Controls.Add(label1);
             gradientPanel1.Controls.Add(btnHome);
             gradientPanel1.Controls.Add(btnClear);
             gradientPanel1.Controls.Add(btnNew);
@@ -77,7 +79,7 @@
             btnHome.BackgroundImage = (Image)resources.GetObject("btnHome.BackgroundImage");
             btnHome.BackgroundImageLayout = ImageLayout.Zoom;
             btnHome.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnHome.Location = new Point(25, 87);
+            btnHome.Location = new Point(25, 103);
             btnHome.Name = "btnHome";
             btnHome.Size = new Size(61, 48);
             btnHome.TabIndex = 131;
@@ -89,7 +91,7 @@
             btnClear.BackgroundImage = (Image)resources.GetObject("btnClear.BackgroundImage");
             btnClear.BackgroundImageLayout = ImageLayout.Zoom;
             btnClear.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnClear.Location = new Point(415, 152);
+            btnClear.Location = new Point(415, 168);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(61, 35);
             btnClear.TabIndex = 123;
@@ -101,7 +103,7 @@
             btnNew.BackgroundImage = (Image)resources.GetObject("btnNew.BackgroundImage");
             btnNew.BackgroundImageLayout = ImageLayout.Zoom;
             btnNew.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnNew.Location = new Point(238, 87);
+            btnNew.Location = new Point(238, 103);
             btnNew.Name = "btnNew";
             btnNew.Size = new Size(61, 48);
             btnNew.TabIndex = 130;
@@ -112,7 +114,7 @@
             // 
             label9.BackColor = Color.Transparent;
             label9.Image = (Image)resources.GetObject("label9.Image");
-            label9.Location = new Point(380, 157);
+            label9.Location = new Point(380, 173);
             label9.Name = "label9";
             label9.Size = new Size(30, 27);
             label9.TabIndex = 129;
@@ -121,7 +123,7 @@
             // 
             txtSearch.BackColor = SystemColors.InactiveBorder;
             txtSearch.ForeColor = SystemColors.InactiveCaption;
-            txtSearch.Location = new Point(199, 157);
+            txtSearch.Location = new Point(199, 173);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(180, 27);
             txtSearch.TabIndex = 128;
@@ -135,7 +137,7 @@
             cmbSearch.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbSearch.FormattingEnabled = true;
             cmbSearch.Items.AddRange(new object[] { "first_name", "last_name", "full_name", "gender", "nic", "email", "address", "telephone_no", "medium", "date_of_join" });
-            cmbSearch.Location = new Point(13, 156);
+            cmbSearch.Location = new Point(13, 172);
             cmbSearch.Name = "cmbSearch";
             cmbSearch.Size = new Size(180, 28);
             cmbSearch.TabIndex = 127;
@@ -145,7 +147,7 @@
             btnDelete.BackgroundImage = (Image)resources.GetObject("btnDelete.BackgroundImage");
             btnDelete.BackgroundImageLayout = ImageLayout.Zoom;
             btnDelete.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDelete.Location = new Point(167, 87);
+            btnDelete.Location = new Point(167, 103);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(61, 48);
             btnDelete.TabIndex = 126;
@@ -158,7 +160,7 @@
             dgvStudentSubject.AllowUserToDeleteRows = false;
             dgvStudentSubject.BackgroundColor = SystemColors.ControlLight;
             dgvStudentSubject.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvStudentSubject.Location = new Point(13, 196);
+            dgvStudentSubject.Location = new Point(13, 212);
             dgvStudentSubject.Name = "dgvStudentSubject";
             dgvStudentSubject.RowHeadersWidth = 51;
             dgvStudentSubject.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -171,7 +173,7 @@
             btnGetData.BackgroundImage = (Image)resources.GetObject("btnGetData.BackgroundImage");
             btnGetData.BackgroundImageLayout = ImageLayout.Zoom;
             btnGetData.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGetData.Location = new Point(96, 87);
+            btnGetData.Location = new Point(96, 103);
             btnGetData.Name = "btnGetData";
             btnGetData.Size = new Size(61, 48);
             btnGetData.TabIndex = 124;
@@ -231,6 +233,18 @@
             lblFirstName.TabIndex = 119;
             lblFirstName.Text = "Subject Id";
             // 
+            // label1
+            // 
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.ControlLightLight;
+            label1.Location = new Point(6, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(187, 47);
+            label1.TabIndex = 132;
+            label1.Text = "Student Subject";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // StudentSubject
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -262,5 +276,6 @@
         private Label txtAdmisionNo;
         private Button btnUpdate;
         private Label lblFirstName;
+        private Label label1;
     }
 }

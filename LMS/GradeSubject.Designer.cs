@@ -44,6 +44,7 @@
             label1 = new Label();
             btnUpdate = new Button();
             lblFirstName = new Label();
+            label2 = new Label();
             gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvGradeSubject).BeginInit();
             SuspendLayout();
@@ -52,6 +53,7 @@
             // 
             gradientPanel1.ColorBottom = Color.FromArgb(4, 87, 122);
             gradientPanel1.ColorTop = Color.Teal;
+            gradientPanel1.Controls.Add(label2);
             gradientPanel1.Controls.Add(btnHome);
             gradientPanel1.Controls.Add(btnClear);
             gradientPanel1.Controls.Add(btnNew);
@@ -77,7 +79,7 @@
             btnHome.BackgroundImage = (Image)resources.GetObject("btnHome.BackgroundImage");
             btnHome.BackgroundImageLayout = ImageLayout.Zoom;
             btnHome.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnHome.Location = new Point(24, 76);
+            btnHome.Location = new Point(24, 85);
             btnHome.Name = "btnHome";
             btnHome.Size = new Size(61, 48);
             btnHome.TabIndex = 117;
@@ -89,7 +91,7 @@
             btnClear.BackgroundImage = (Image)resources.GetObject("btnClear.BackgroundImage");
             btnClear.BackgroundImageLayout = ImageLayout.Zoom;
             btnClear.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnClear.Location = new Point(414, 141);
+            btnClear.Location = new Point(414, 150);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(61, 35);
             btnClear.TabIndex = 105;
@@ -101,7 +103,7 @@
             btnNew.BackgroundImage = (Image)resources.GetObject("btnNew.BackgroundImage");
             btnNew.BackgroundImageLayout = ImageLayout.Zoom;
             btnNew.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnNew.Location = new Point(237, 76);
+            btnNew.Location = new Point(237, 85);
             btnNew.Name = "btnNew";
             btnNew.Size = new Size(61, 48);
             btnNew.TabIndex = 116;
@@ -112,7 +114,7 @@
             // 
             label9.BackColor = Color.Transparent;
             label9.Image = (Image)resources.GetObject("label9.Image");
-            label9.Location = new Point(379, 146);
+            label9.Location = new Point(379, 155);
             label9.Name = "label9";
             label9.Size = new Size(30, 27);
             label9.TabIndex = 115;
@@ -121,7 +123,7 @@
             // 
             txtSearch.BackColor = SystemColors.InactiveBorder;
             txtSearch.ForeColor = SystemColors.InactiveCaption;
-            txtSearch.Location = new Point(198, 146);
+            txtSearch.Location = new Point(198, 155);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(180, 27);
             txtSearch.TabIndex = 113;
@@ -135,7 +137,7 @@
             cmbSearch.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbSearch.FormattingEnabled = true;
             cmbSearch.Items.AddRange(new object[] { "first_name", "last_name", "full_name", "gender", "nic", "email", "address", "telephone_no", "medium", "date_of_join" });
-            cmbSearch.Location = new Point(12, 145);
+            cmbSearch.Location = new Point(12, 154);
             cmbSearch.Name = "cmbSearch";
             cmbSearch.Size = new Size(180, 28);
             cmbSearch.TabIndex = 112;
@@ -145,7 +147,7 @@
             btnDelete.BackgroundImage = (Image)resources.GetObject("btnDelete.BackgroundImage");
             btnDelete.BackgroundImageLayout = ImageLayout.Zoom;
             btnDelete.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDelete.Location = new Point(166, 76);
+            btnDelete.Location = new Point(166, 85);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(61, 48);
             btnDelete.TabIndex = 110;
@@ -158,7 +160,7 @@
             dgvGradeSubject.AllowUserToDeleteRows = false;
             dgvGradeSubject.BackgroundColor = SystemColors.ControlLight;
             dgvGradeSubject.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvGradeSubject.Location = new Point(12, 185);
+            dgvGradeSubject.Location = new Point(12, 194);
             dgvGradeSubject.Name = "dgvGradeSubject";
             dgvGradeSubject.RowHeadersWidth = 51;
             dgvGradeSubject.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -171,7 +173,7 @@
             btnGetData.BackgroundImage = (Image)resources.GetObject("btnGetData.BackgroundImage");
             btnGetData.BackgroundImageLayout = ImageLayout.Zoom;
             btnGetData.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGetData.Location = new Point(95, 76);
+            btnGetData.Location = new Point(95, 85);
             btnGetData.Name = "btnGetData";
             btnGetData.Size = new Size(61, 48);
             btnGetData.TabIndex = 106;
@@ -182,7 +184,7 @@
             // 
             cmbGradeId.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbGradeId.FormattingEnabled = true;
-            cmbGradeId.Location = new Point(736, 247);
+            cmbGradeId.Location = new Point(730, 270);
             cmbGradeId.Name = "cmbGradeId";
             cmbGradeId.Size = new Size(179, 28);
             cmbGradeId.TabIndex = 103;
@@ -191,7 +193,7 @@
             // 
             cmbSubjectId.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbSubjectId.FormattingEnabled = true;
-            cmbSubjectId.Location = new Point(736, 193);
+            cmbSubjectId.Location = new Point(730, 216);
             cmbSubjectId.Name = "cmbSubjectId";
             cmbSubjectId.Size = new Size(179, 28);
             cmbSubjectId.TabIndex = 103;
@@ -202,7 +204,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
             label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(622, 248);
+            label1.Location = new Point(616, 271);
             label1.Name = "label1";
             label1.Size = new Size(86, 23);
             label1.TabIndex = 9;
@@ -211,7 +213,7 @@
             // btnUpdate
             // 
             btnUpdate.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold);
-            btnUpdate.Location = new Point(738, 295);
+            btnUpdate.Location = new Point(732, 318);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(107, 39);
             btnUpdate.TabIndex = 102;
@@ -225,11 +227,23 @@
             lblFirstName.BackColor = Color.Transparent;
             lblFirstName.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
             lblFirstName.ForeColor = SystemColors.ControlLightLight;
-            lblFirstName.Location = new Point(622, 194);
+            lblFirstName.Location = new Point(616, 217);
             lblFirstName.Name = "lblFirstName";
             lblFirstName.Size = new Size(96, 23);
             lblFirstName.TabIndex = 9;
             lblFirstName.Text = "Subject Id";
+            // 
+            // label2
+            // 
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = SystemColors.ControlLightLight;
+            label2.Location = new Point(24, 9);
+            label2.Name = "label2";
+            label2.Size = new Size(187, 47);
+            label2.TabIndex = 133;
+            label2.Text = "Grade Subject";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // GradeSubject
             // 
@@ -264,5 +278,6 @@
         private DataGridView dgvGradeSubject;
         private Button btnGetData;
         private Button btnHome;
+        private Label label2;
     }
 }
