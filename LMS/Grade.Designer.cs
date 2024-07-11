@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Grade));
             gradientPanel1 = new GradientPanel();
+            btnGradeSubjects = new Button();
             btnCancel = new Button();
             btnUpdate = new Button();
             groupBox3 = new GroupBox();
@@ -55,7 +56,6 @@
             button1 = new Button();
             btnTestConnection = new Button();
             label1 = new Label();
-            btnGradeSubjects = new Button();
             gradientPanel1.SuspendLayout();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvGrade).BeginInit();
@@ -90,6 +90,17 @@
             gradientPanel1.Name = "gradientPanel1";
             gradientPanel1.Size = new Size(1343, 624);
             gradientPanel1.TabIndex = 0;
+            // 
+            // btnGradeSubjects
+            // 
+            btnGradeSubjects.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGradeSubjects.Location = new Point(1171, 74);
+            btnGradeSubjects.Name = "btnGradeSubjects";
+            btnGradeSubjects.Size = new Size(150, 38);
+            btnGradeSubjects.TabIndex = 85;
+            btnGradeSubjects.Text = "Grade Subjects";
+            btnGradeSubjects.UseVisualStyleBackColor = true;
+            btnGradeSubjects.Click += btnGradeSubjects_Click;
             // 
             // btnCancel
             // 
@@ -370,17 +381,6 @@
             label1.TabIndex = 2;
             label1.Text = "Grade Details Form";
             label1.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // btnGradeSubjects
-            // 
-            btnGradeSubjects.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGradeSubjects.Location = new Point(1169, 75);
-            btnGradeSubjects.Name = "btnGradeSubjects";
-            btnGradeSubjects.Size = new Size(150, 38);
-            btnGradeSubjects.TabIndex = 85;
-            btnGradeSubjects.Text = "Grade Subjects";
-            btnGradeSubjects.UseVisualStyleBackColor = true;
-            btnGradeSubjects.Click += btnGradeSubjects_Click;
             // 
             // Grade
             // 

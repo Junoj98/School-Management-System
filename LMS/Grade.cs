@@ -97,7 +97,7 @@ namespace LMS
                 cnn.Open();
                 command = new SqlCommand(sql, cnn);
                 command.ExecuteNonQuery();
-                MessageBox.Show("Connection Open ! ");
+                MessageBox.Show("Grade details deleted successfully ");
                 cnn.Close();
             }
             catch (Exception ex)
@@ -212,7 +212,7 @@ namespace LMS
                     cnn.Open();
                     command = new SqlCommand(sql, cnn);
                     command.ExecuteNonQuery();
-                    MessageBox.Show("Connection Open ! ");
+                    MessageBox.Show("Grade detailsadded successfully ");
                     cnn.Close();
                 }
                 catch (Exception ex)
@@ -234,7 +234,7 @@ namespace LMS
                     cnn.Open();
                     command = new SqlCommand(sql, cnn);
                     command.ExecuteNonQuery();
-                    MessageBox.Show("Connection Open ! ");
+                    MessageBox.Show("Grade details updated successfully ");
                     cnn.Close();
                 }
                 catch (Exception ex)
@@ -256,7 +256,7 @@ namespace LMS
         private void btnGradeSubjects_Click(object sender, EventArgs e)
         {
             GradeSubject gradeSubject = new GradeSubject();
-            gradeSubject.Show();
+            gradeSubject.ShowDialog();
             this.Hide();
         }
     }

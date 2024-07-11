@@ -69,7 +69,7 @@ namespace LMS
 
                         if (count == 1)
                         {
-                            MessageBox.Show("Login successful", "Success Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            //MessageBox.Show("Login successful", "Success Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Form1 form1 = new Form1();
                             form1.Show();
                             this.Hide();

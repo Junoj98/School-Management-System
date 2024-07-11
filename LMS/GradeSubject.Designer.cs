@@ -77,7 +77,7 @@
             btnHome.BackgroundImage = (Image)resources.GetObject("btnHome.BackgroundImage");
             btnHome.BackgroundImageLayout = ImageLayout.Zoom;
             btnHome.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnHome.Location = new Point(771, 76);
+            btnHome.Location = new Point(24, 76);
             btnHome.Name = "btnHome";
             btnHome.Size = new Size(61, 48);
             btnHome.TabIndex = 117;
@@ -145,7 +145,7 @@
             btnDelete.BackgroundImage = (Image)resources.GetObject("btnDelete.BackgroundImage");
             btnDelete.BackgroundImageLayout = ImageLayout.Zoom;
             btnDelete.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDelete.Location = new Point(164, 76);
+            btnDelete.Location = new Point(166, 76);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(61, 48);
             btnDelete.TabIndex = 110;
@@ -158,7 +158,7 @@
             dgvGradeSubject.AllowUserToDeleteRows = false;
             dgvGradeSubject.BackgroundColor = SystemColors.ControlLight;
             dgvGradeSubject.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvGradeSubject.Location = new Point(12, 179);
+            dgvGradeSubject.Location = new Point(12, 185);
             dgvGradeSubject.Name = "dgvGradeSubject";
             dgvGradeSubject.RowHeadersWidth = 51;
             dgvGradeSubject.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -171,7 +171,7 @@
             btnGetData.BackgroundImage = (Image)resources.GetObject("btnGetData.BackgroundImage");
             btnGetData.BackgroundImageLayout = ImageLayout.Zoom;
             btnGetData.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGetData.Location = new Point(91, 76);
+            btnGetData.Location = new Point(95, 76);
             btnGetData.Name = "btnGetData";
             btnGetData.Size = new Size(61, 48);
             btnGetData.TabIndex = 106;
@@ -182,7 +182,7 @@
             // 
             cmbGradeId.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbGradeId.FormattingEnabled = true;
-            cmbGradeId.Location = new Point(736, 243);
+            cmbGradeId.Location = new Point(736, 247);
             cmbGradeId.Name = "cmbGradeId";
             cmbGradeId.Size = new Size(179, 28);
             cmbGradeId.TabIndex = 103;
@@ -191,7 +191,7 @@
             // 
             cmbSubjectId.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbSubjectId.FormattingEnabled = true;
-            cmbSubjectId.Location = new Point(736, 189);
+            cmbSubjectId.Location = new Point(736, 193);
             cmbSubjectId.Name = "cmbSubjectId";
             cmbSubjectId.Size = new Size(179, 28);
             cmbSubjectId.TabIndex = 103;
@@ -200,11 +200,11 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Times New Roman", 10.8F);
+            label1.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
             label1.ForeColor = SystemColors.ControlLightLight;
             label1.Location = new Point(622, 248);
             label1.Name = "label1";
-            label1.Size = new Size(73, 20);
+            label1.Size = new Size(86, 23);
             label1.TabIndex = 9;
             label1.Text = "Grade Id";
             // 
@@ -223,11 +223,11 @@
             // 
             lblFirstName.AutoSize = true;
             lblFirstName.BackColor = Color.Transparent;
-            lblFirstName.Font = new Font("Times New Roman", 10.8F);
+            lblFirstName.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
             lblFirstName.ForeColor = SystemColors.ControlLightLight;
             lblFirstName.Location = new Point(622, 194);
             lblFirstName.Name = "lblFirstName";
-            lblFirstName.Size = new Size(83, 20);
+            lblFirstName.Size = new Size(96, 23);
             lblFirstName.TabIndex = 9;
             lblFirstName.Text = "Subject Id";
             // 
@@ -237,7 +237,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(970, 496);
             Controls.Add(gradientPanel1);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "GradeSubject";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "GradeSubject";
             gradientPanel1.ResumeLayout(false);
             gradientPanel1.PerformLayout();

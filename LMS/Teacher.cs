@@ -225,6 +225,12 @@ namespace LMS
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (txtFirstName.Text == "" || txtLastName.Text == "" || txtFullName.Text == "" || dtpDob.Text == "" || txtNicNo.Text == "" || txtEmail.Text == "" || txtAddress.Text == "" || txtTelephoneNo.Text == "" || txtMedium.Text == "" || dtpDateofJoin.Text == "" || (!rdoBtnMale.Checked && !rdoBtnFemale.Checked))
+            {
+                MessageBox.Show("Please fill all the blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (btnUpdate.Text == "Save")
             {
                 string Gender = null;

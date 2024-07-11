@@ -75,7 +75,7 @@ namespace LMS
                 cnn.Open();
                 command = new SqlCommand(sql, cnn);
                 command.ExecuteNonQuery();
-                MessageBox.Show("Student details successfully deleted ");
+                MessageBox.Show(" Successfully deleted ");
                 cnn.Close();
             }
             catch (Exception ex)
@@ -175,7 +175,7 @@ namespace LMS
                     cnn.Open();
                     command = new SqlCommand(sql, cnn);
                     command.ExecuteNonQuery();
-                    MessageBox.Show("Student detail successfully added ");
+                    MessageBox.Show("Successfully added ");
                     cnn.Close();
                 }
                 catch (Exception ex)
@@ -197,7 +197,7 @@ namespace LMS
                     cnn.Open();
                     command = new SqlCommand(sql, cnn);
                     command.ExecuteNonQuery();
-                    MessageBox.Show("Student details successfully updated");
+                    MessageBox.Show("Successfully updated");
                     cnn.Close();
                 }
                 catch (Exception ex)

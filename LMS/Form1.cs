@@ -21,24 +21,38 @@ namespace LMS
         {
             Student student = new Student();
             student.ShowDialog();
+            this.Hide();
+
         }
 
         private void btnTeacher_Click(object sender, EventArgs e)
         {
             Teacher teacher = new Teacher();
             teacher.ShowDialog();
+            this.Hide();
+
         }
 
         private void btnGrade_Click(object sender, EventArgs e)
         {
             Grade grade = new Grade();
             grade.ShowDialog();
+            this.Hide();
+
         }
 
         private void btnSubject_Click(object sender, EventArgs e)
         {
             Subject subject = new Subject();
             subject.ShowDialog();
+            this.Hide();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.ShowDialog();
+            this.Hide();
         }
     }
 }

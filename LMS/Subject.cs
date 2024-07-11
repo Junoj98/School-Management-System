@@ -200,6 +200,12 @@ namespace LMS
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (txtSubjectName.Text == "" || txtSubjectIndex.Text == "" || txtSubjectNumber.Text == "" || txtSubjectOrder.Text == "")
+            {
+                MessageBox.Show("Please fill all the blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (btnUpdate.Text == "Save")
             {
 
@@ -214,7 +220,7 @@ namespace LMS
                     cnn.Open();
                     command = new SqlCommand(sql, cnn);
                     command.ExecuteNonQuery();
-                    MessageBox.Show("Student detail successfully added ");
+                    MessageBox.Show("Subject detail successfully added ");
                     cnn.Close();
                 }
                 catch (Exception ex)
@@ -236,7 +242,7 @@ namespace LMS
                     cnn.Open();
                     command = new SqlCommand(sql, cnn);
                     command.ExecuteNonQuery();
-                    MessageBox.Show("Student details successfully updated");
+                    MessageBox.Show("Subject details successfully updated");
                     cnn.Close();
                 }
                 catch (Exception ex)

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             gradientPanel1 = new GradientPanel();
+            btnLogout = new Button();
             pictureBox1 = new PictureBox();
             btnSubject = new Button();
             btnGrade = new Button();
@@ -44,6 +45,7 @@
             // 
             gradientPanel1.ColorBottom = Color.FromArgb(4, 87, 122);
             gradientPanel1.ColorTop = Color.Teal;
+            gradientPanel1.Controls.Add(btnLogout);
             gradientPanel1.Controls.Add(pictureBox1);
             gradientPanel1.Controls.Add(btnSubject);
             gradientPanel1.Controls.Add(btnGrade);
@@ -55,6 +57,19 @@
             gradientPanel1.Name = "gradientPanel1";
             gradientPanel1.Size = new Size(969, 498);
             gradientPanel1.TabIndex = 0;
+            // 
+            // btnLogout
+            // 
+            btnLogout.BackColor = Color.Transparent;
+            btnLogout.BackgroundImage = (Image)resources.GetObject("btnLogout.BackgroundImage");
+            btnLogout.BackgroundImageLayout = ImageLayout.Zoom;
+            btnLogout.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogout.Location = new Point(881, 40);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(67, 59);
+            btnLogout.TabIndex = 82;
+            btnLogout.UseVisualStyleBackColor = false;
+            btnLogout.Click += btnLogout_Click;
             // 
             // pictureBox1
             // 
@@ -149,5 +164,7 @@
         private Button btnStudent;
         private PictureBox pictureBox1;
         private Button btnSubject;
+        private Button btnHome;
+        private Button btnLogout;
     }
 }
