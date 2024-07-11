@@ -6,6 +6,8 @@ namespace LMS
     {
         public Form1()
         {
+            
+            
             InitializeComponent();
         }
 

@@ -28,6 +28,30 @@ namespace LMS
             groupBox3.BackColor = Color.Transparent;
             label1.Parent = gradientPanel1;
             label1.BackColor = Color.Transparent;
+
+            string connetionString = null;
+            connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
+            SqlConnection cnn = new SqlConnection(connetionString);
+            SqlCommand command;
+            string sql = "select * from teachers";
+
+            try
+            {
+                cnn.Open();
+                command = new SqlCommand(sql, cnn);
+                SqlDataReader sqlReader = command.ExecuteReader(); 
+                DataTable dt = new DataTable();
+                dt.Load(sqlReader);
+                dgvTeacher.DataSource = dt;
+                SetColumnHeaders();
+                sqlReader.Close();
+                command.Dispose();
+                cnn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not open connection ! ");
+            }
         }
 
         private void btnDataInsert_Click(object sender, EventArgs e)
@@ -215,6 +239,26 @@ namespace LMS
                 txtMedium.Text = medium;
                 dtpDateofJoin.Text = dateofjoin;
                 txtAddress.Text = address;
+            }
+        }
+
+        private void SetColumnHeaders()
+        {
+            dgvTeacher.Columns["first_name"].HeaderText = "First Name";
+            dgvTeacher.Columns["last_name"].HeaderText = "Last Name";
+            dgvTeacher.Columns["full_name"].HeaderText = "Full Name";
+            dgvTeacher.Columns["gender"].HeaderText = "Gender";
+            dgvTeacher.Columns["dob"].HeaderText = "Date of Birth";
+            dgvTeacher.Columns["nic"].HeaderText = "NIC";
+            dgvTeacher.Columns["email"].HeaderText = "Email";
+            dgvTeacher.Columns["address"].HeaderText = "Address";
+            dgvTeacher.Columns["telephone"].HeaderText = "Telephone";
+            dgvTeacher.Columns["medium"].HeaderText = "Medium";
+            dgvTeacher.Columns["date_of_join"].HeaderText = "Date of Join";
+
+            foreach (DataGridViewColumn column in dgvTeacher.Columns)
+            {
+                column.HeaderCell.Style.Font = new Font(dgvTeacher.Font, FontStyle.Bold);
             }
         }
 

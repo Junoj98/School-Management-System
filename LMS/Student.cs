@@ -30,6 +30,37 @@ namespace LMS
             groupBox3.Parent = gradientPanel1;
             groupBox3.BackColor = Color.Transparent;
 
+
+
+            string connetionString = null;
+            connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
+            SqlConnection cnn = new SqlConnection(connetionString);
+            SqlCommand command;
+            string sql = "select * from students";
+
+            try
+            {
+                cnn.Open();
+                command = new SqlCommand(sql, cnn);
+                SqlDataReader sqlReader = command.ExecuteReader();
+                // while (sqlReader.Read())
+                //{
+                //  MessageBox.Show(sqlReader.GetValue(0)+"-"+ sqlReader.GetValue(1) + "-" + sqlReader.GetValue(2) + "-" + sqlReader.GetValue(3) + "-" + sqlReader.GetValue(4) + "-" + sqlReader.GetValue(5));
+                // }
+                DataTable dt = new DataTable();
+
+                dt.Load(sqlReader);
+
+                dgvStudent.DataSource = dt;
+                sqlReader.Close();
+                command.Dispose();
+                cnn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not open connection ! ");
+            }
+
         }
 
         private void btnTestConnection_Click(object sender, EventArgs e)
@@ -130,7 +161,7 @@ namespace LMS
                 cnn.Open();
                 command = new SqlCommand(sql, cnn);
                 command.ExecuteNonQuery();
-                MessageBox.Show("Connection Open ! ");
+                MessageBox.Show("Student details deleted successfully ! ");
                 cnn.Close();
             }
             catch (Exception ex)
@@ -224,22 +255,17 @@ namespace LMS
                 txtMedium.Text = medium;
                 dtpDateofAdmission.Text = dateofadmission;
                 txtAddress.Text = address;
+
             }
         }
-
         private void btnEdit_Click(object sender, EventArgs e)
         {
 
         }
 
-
-
-
-
-
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
+         private void btnUpdate_Click(object sender, EventArgs e)
+         {
+            
             if (btnUpdate.Text == "Save")
             {
                 string Gender = null;
@@ -263,7 +289,7 @@ namespace LMS
                     cnn.Open();
                     command = new SqlCommand(sql, cnn);
                     command.ExecuteNonQuery();
-                    MessageBox.Show("Connection Open ! ");
+                    MessageBox.Show("Student details added successfully ! ");
                     cnn.Close();
                 }
                 catch (Exception ex)
@@ -293,13 +319,15 @@ namespace LMS
                     cnn.Open();
                     command = new SqlCommand(sql, cnn);
                     command.ExecuteNonQuery();
-                    MessageBox.Show("Connection Open ! ");
+                    MessageBox.Show("Student details updated successfully ! ");
                     cnn.Close();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Can not open connection ! ");
                 }
+
+
             }
 
         }
@@ -351,6 +379,7 @@ namespace LMS
         {
             StudentSubject studentSubject = new StudentSubject();
             studentSubject.Show();
+            this.Hide();
         }
     }
 }

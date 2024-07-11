@@ -54,10 +54,6 @@ namespace LMS
                 cnn.Open();
                 command = new SqlCommand(sql, cnn);
                 SqlDataReader sqlReader = command.ExecuteReader();
-                // while (sqlReader.Read())
-                //{
-                //  MessageBox.Show(sqlReader.GetValue(0)+"-"+ sqlReader.GetValue(1) + "-" + sqlReader.GetValue(2) + "-" + sqlReader.GetValue(3) + "-" + sqlReader.GetValue(4) + "-" + sqlReader.GetValue(5));
-                // }
                 DataTable dt = new DataTable();
 
                 dt.Load(sqlReader);
@@ -213,7 +209,7 @@ namespace LMS
                 SqlConnection cnn = new SqlConnection(connetionString);
                 connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlCommand command;
-                string sql = "INSERT INTO [subjects] ([subject_name],[subject_index],[subject_order],[subject_number],[created_at])VALUES('" + txtSubjectName.Text + "','" + txtSubjectIndex.Text + "','" + txtSubjectOrder.Text + "','" + txtSubjectNumber.Text + "','"+DateTime.Now+"' )";
+                string sql = "INSERT INTO [subjects] ([subject_name],[subject_index],[subject_order],[subject_number],[created_at])VALUES('" + txtSubjectName.Text + "','" + txtSubjectIndex.Text + "','" + txtSubjectOrder.Text + "','" + txtSubjectNumber.Text + "','" + DateTime.Now + "' )";
                 cnn = new SqlConnection(connetionString);
                 try
                 {
@@ -235,7 +231,7 @@ namespace LMS
                 SqlConnection cnn = new SqlConnection(connetionString);
                 connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlCommand command;
-                string sql = "UPDATE [subjects] SET [subject_name]='" + txtSubjectName.Text + "',[subject_index]='" + txtSubjectIndex.Text + "',[subject_order]='" + txtSubjectOrder.Text + "',[subject_number]='" + txtSubjectNumber.Text + "',[updated_at] = '"+DateTime.Now+"' WHERE [id]='" + this.id + "'";
+                string sql = "UPDATE [subjects] SET [subject_name]='" + txtSubjectName.Text + "',[subject_index]='" + txtSubjectIndex.Text + "',[subject_order]='" + txtSubjectOrder.Text + "',[subject_number]='" + txtSubjectNumber.Text + "',[updated_at] = '" + DateTime.Now + "' WHERE [id]='" + this.id + "'";
                 cnn = new SqlConnection(connetionString);
                 try
                 {
@@ -260,6 +256,34 @@ namespace LMS
             txtSubjectOrder.Text = null;
             txtSubjectNumber.Text = null;
             btnUpdate.Text = "Save";
+        }
+
+        private void Subject_Load(object sender, EventArgs e)
+        {
+            string connetionString = null;
+            connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
+            SqlConnection cnn = new SqlConnection(connetionString);
+            SqlCommand command;
+            string sql = "select * from subjects";
+
+            try
+            {
+                cnn.Open();
+                command = new SqlCommand(sql, cnn);
+                SqlDataReader sqlReader = command.ExecuteReader();
+                DataTable dt = new DataTable();
+
+                dt.Load(sqlReader);
+
+                dgvSubject.DataSource = dt;
+                sqlReader.Close();
+                command.Dispose();
+                cnn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not open connection ! ");
+            }
         }
     }
 }

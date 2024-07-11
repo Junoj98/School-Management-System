@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentSubject));
             gradientPanel1 = new GradientPanel();
+            label1 = new Label();
             btnHome = new Button();
             btnClear = new Button();
             btnNew = new Button();
@@ -44,7 +45,6 @@
             txtAdmisionNo = new Label();
             btnUpdate = new Button();
             lblFirstName = new Label();
-            label1 = new Label();
             gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStudentSubject).BeginInit();
             SuspendLayout();
@@ -73,6 +73,18 @@
             gradientPanel1.Name = "gradientPanel1";
             gradientPanel1.Size = new Size(970, 496);
             gradientPanel1.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.ControlLightLight;
+            label1.Location = new Point(6, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(187, 47);
+            label1.TabIndex = 132;
+            label1.Text = "Student Subject";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnHome
             // 
@@ -233,26 +245,17 @@
             lblFirstName.TabIndex = 119;
             lblFirstName.Text = "Subject Id";
             // 
-            // label1
-            // 
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(6, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(187, 47);
-            label1.TabIndex = 132;
-            label1.Text = "Student Subject";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // StudentSubject
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(970, 496);
             Controls.Add(gradientPanel1);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "StudentSubject";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "StudentSubject";
+            Load += StudentSubject_Load;
             gradientPanel1.ResumeLayout(false);
             gradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStudentSubject).EndInit();

@@ -218,5 +218,33 @@ namespace LMS
                 cmbAdmissionNo.Text = gradeid;
             }
         }
+
+        private void StudentSubject_Load(object sender, EventArgs e)
+        {
+            string connetionString = null;
+            connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
+            SqlConnection cnn = new SqlConnection(connetionString);
+            SqlCommand command;
+            string sql = "select * from student_subjects";
+
+            try
+            {
+                cnn.Open();
+                command = new SqlCommand(sql, cnn);
+                SqlDataReader sqlReader = command.ExecuteReader();
+                DataTable dt = new DataTable();
+
+                dt.Load(sqlReader);
+
+                dgvStudentSubject.DataSource = dt;
+                sqlReader.Close();
+                command.Dispose();
+                cnn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not open connection ! ");
+            }
+        }
     }
 }

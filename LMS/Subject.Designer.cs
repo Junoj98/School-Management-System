@@ -48,12 +48,8 @@
             txtSearch = new TextBox();
             cmbSearch = new ComboBox();
             btnNew = new Button();
-            btnEdit = new Button();
-            btnGetStudent = new Button();
             btnDelete = new Button();
-            btnAdd = new Button();
             btnGetData = new Button();
-            btnDataInsert = new Button();
             button1 = new Button();
             label1 = new Label();
             gradientPanel1.SuspendLayout();
@@ -75,12 +71,8 @@
             gradientPanel1.Controls.Add(txtSearch);
             gradientPanel1.Controls.Add(cmbSearch);
             gradientPanel1.Controls.Add(btnNew);
-            gradientPanel1.Controls.Add(btnEdit);
-            gradientPanel1.Controls.Add(btnGetStudent);
             gradientPanel1.Controls.Add(btnDelete);
-            gradientPanel1.Controls.Add(btnAdd);
             gradientPanel1.Controls.Add(btnGetData);
-            gradientPanel1.Controls.Add(btnDataInsert);
             gradientPanel1.Controls.Add(button1);
             gradientPanel1.Controls.Add(label1);
             gradientPanel1.Dock = DockStyle.Fill;
@@ -207,7 +199,7 @@
             btnHome.BackgroundImage = (Image)resources.GetObject("btnHome.BackgroundImage");
             btnHome.BackgroundImageLayout = ImageLayout.Zoom;
             btnHome.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnHome.Location = new Point(1093, 80);
+            btnHome.Location = new Point(285, 79);
             btnHome.Name = "btnHome";
             btnHome.Size = new Size(61, 48);
             btnHome.TabIndex = 99;
@@ -277,90 +269,43 @@
             btnNew.BackgroundImage = (Image)resources.GetObject("btnNew.BackgroundImage");
             btnNew.BackgroundImageLayout = ImageLayout.Zoom;
             btnNew.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnNew.Location = new Point(488, 80);
+            btnNew.Location = new Point(218, 78);
             btnNew.Name = "btnNew";
             btnNew.Size = new Size(61, 48);
             btnNew.TabIndex = 93;
             btnNew.UseVisualStyleBackColor = true;
             btnNew.Click += btnNew_Click;
             // 
-            // btnEdit
-            // 
-            btnEdit.BackgroundImage = (Image)resources.GetObject("btnEdit.BackgroundImage");
-            btnEdit.BackgroundImageLayout = ImageLayout.Zoom;
-            btnEdit.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEdit.Location = new Point(284, 80);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(61, 48);
-            btnEdit.TabIndex = 92;
-            btnEdit.UseVisualStyleBackColor = true;
-            btnEdit.Click += btnEdit_Click;
-            // 
-            // btnGetStudent
-            // 
-            btnGetStudent.BackgroundImage = (Image)resources.GetObject("btnGetStudent.BackgroundImage");
-            btnGetStudent.BackgroundImageLayout = ImageLayout.Zoom;
-            btnGetStudent.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGetStudent.Location = new Point(352, 80);
-            btnGetStudent.Name = "btnGetStudent";
-            btnGetStudent.Size = new Size(61, 48);
-            btnGetStudent.TabIndex = 91;
-            btnGetStudent.UseVisualStyleBackColor = true;
-            // 
             // btnDelete
             // 
             btnDelete.BackgroundImage = (Image)resources.GetObject("btnDelete.BackgroundImage");
             btnDelete.BackgroundImageLayout = ImageLayout.Zoom;
             btnDelete.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDelete.Location = new Point(420, 80);
+            btnDelete.Location = new Point(151, 78);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(61, 48);
             btnDelete.TabIndex = 90;
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
-            // btnAdd
-            // 
-            btnAdd.BackgroundImage = (Image)resources.GetObject("btnAdd.BackgroundImage");
-            btnAdd.BackgroundImageLayout = ImageLayout.Zoom;
-            btnAdd.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAdd.Location = new Point(216, 79);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(61, 48);
-            btnAdd.TabIndex = 86;
-            btnAdd.UseVisualStyleBackColor = true;
-            btnAdd.Click += btnAdd_Click;
-            // 
             // btnGetData
             // 
             btnGetData.BackgroundImage = (Image)resources.GetObject("btnGetData.BackgroundImage");
             btnGetData.BackgroundImageLayout = ImageLayout.Zoom;
             btnGetData.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGetData.Location = new Point(148, 80);
+            btnGetData.Location = new Point(84, 79);
             btnGetData.Name = "btnGetData";
             btnGetData.Size = new Size(61, 48);
             btnGetData.TabIndex = 87;
             btnGetData.UseVisualStyleBackColor = true;
             btnGetData.Click += btnGetData_Click;
             // 
-            // btnDataInsert
-            // 
-            btnDataInsert.BackgroundImage = (Image)resources.GetObject("btnDataInsert.BackgroundImage");
-            btnDataInsert.BackgroundImageLayout = ImageLayout.Zoom;
-            btnDataInsert.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDataInsert.Location = new Point(80, 79);
-            btnDataInsert.Name = "btnDataInsert";
-            btnDataInsert.Size = new Size(61, 48);
-            btnDataInsert.TabIndex = 88;
-            btnDataInsert.UseVisualStyleBackColor = true;
-            btnDataInsert.Click += btnDataInsert_Click;
-            // 
             // button1
             // 
             button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
             button1.BackgroundImageLayout = ImageLayout.Zoom;
             button1.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(12, 79);
+            button1.Location = new Point(17, 79);
             button1.Name = "button1";
             button1.Size = new Size(61, 48);
             button1.TabIndex = 89;
@@ -388,6 +333,7 @@
             Name = "Subject";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Subject";
+            Load += Subject_Load;
             gradientPanel1.ResumeLayout(false);
             gradientPanel1.PerformLayout();
             groupBox3.ResumeLayout(false);
@@ -415,12 +361,8 @@
         private TextBox txtSearch;
         private ComboBox cmbSearch;
         private Button btnNew;
-        private Button btnEdit;
-        private Button btnGetStudent;
         private Button btnDelete;
-        private Button btnAdd;
         private Button btnGetData;
-        private Button btnDataInsert;
         private Button button1;
         private Label label1;
         private TextBox txtSubjectNumber;

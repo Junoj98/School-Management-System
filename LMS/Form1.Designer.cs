@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             gradientPanel1 = new GradientPanel();
+            label3 = new Label();
+            btnLogout = new Button();
             btnStudentSubject = new Button();
             pictureBox1 = new PictureBox();
             btnSubject = new Button();
@@ -38,7 +40,6 @@
             btnGradeSubject = new Button();
             btnStudent = new Button();
             label1 = new Label();
-            btnLogout = new Button();
             gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -47,6 +48,7 @@
             // 
             gradientPanel1.ColorBottom = Color.FromArgb(4, 87, 122);
             gradientPanel1.ColorTop = Color.Teal;
+            gradientPanel1.Controls.Add(label3);
             gradientPanel1.Controls.Add(btnLogout);
             gradientPanel1.Controls.Add(btnStudentSubject);
             gradientPanel1.Controls.Add(pictureBox1);
@@ -57,10 +59,32 @@
             gradientPanel1.Controls.Add(btnStudent);
             gradientPanel1.Controls.Add(label1);
             gradientPanel1.Dock = DockStyle.Fill;
+            gradientPanel1.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             gradientPanel1.Location = new Point(0, 0);
             gradientPanel1.Name = "gradientPanel1";
             gradientPanel1.Size = new Size(827, 489);
             gradientPanel1.TabIndex = 0;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label3.Location = new Point(421, 91);
+            label3.Name = "label3";
+            label3.Size = new Size(0, 21);
+            label3.TabIndex = 6;
+            // 
+            // btnLogout
+            // 
+            btnLogout.BackgroundImage = (Image)resources.GetObject("btnLogout.BackgroundImage");
+            btnLogout.BackgroundImageLayout = ImageLayout.Zoom;
+            btnLogout.Location = new Point(713, 50);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(53, 49);
+            btnLogout.TabIndex = 4;
+            btnLogout.TextAlign = ContentAlignment.MiddleLeft;
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click_1;
             // 
             // btnStudentSubject
             // 
@@ -153,17 +177,6 @@
             label1.Text = "School Management System";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // btnLogout
-            // 
-            btnLogout.BackgroundImage = (Image)resources.GetObject("btnLogout.BackgroundImage");
-            btnLogout.BackgroundImageLayout = ImageLayout.Stretch;
-            btnLogout.Location = new Point(713, 50);
-            btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(53, 49);
-            btnLogout.TabIndex = 4;
-            btnLogout.UseVisualStyleBackColor = true;
-            btnLogout.Click += btnLogout_Click_1;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -176,6 +189,7 @@
             Text = "Form1";
             Load += Form1_Load;
             gradientPanel1.ResumeLayout(false);
+            gradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
@@ -193,5 +207,6 @@
         private Button btnGradeSubject;
         private Button btnStudentSubject;
         private Button btnLogout;
+        private Label label3;
     }
 }

@@ -21,7 +21,7 @@ namespace LMS
 
         private void Login_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         //private void lblRegister_Click(object sender, EventArgs e)
@@ -45,6 +45,7 @@ namespace LMS
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
+
             if (string.IsNullOrWhiteSpace(txtUserName.Text) || string.IsNullOrWhiteSpace(txtPassword.Text))
             {
                 MessageBox.Show("Please fill all the blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -31,10 +31,10 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Profile));
             gradientPanel1 = new GradientPanel();
+            pictureBox1 = new PictureBox();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            pictureBox1 = new PictureBox();
             panel1 = new Panel();
             panel2 = new Panel();
             timer1 = new System.Windows.Forms.Timer(components);
@@ -47,10 +47,10 @@
             // 
             gradientPanel1.ColorBottom = Color.FromArgb(4, 87, 122);
             gradientPanel1.ColorTop = Color.Teal;
+            gradientPanel1.Controls.Add(pictureBox1);
             gradientPanel1.Controls.Add(label3);
             gradientPanel1.Controls.Add(label2);
             gradientPanel1.Controls.Add(label1);
-            gradientPanel1.Controls.Add(pictureBox1);
             gradientPanel1.Controls.Add(panel1);
             gradientPanel1.Dock = DockStyle.Fill;
             gradientPanel1.Location = new Point(0, 0);
@@ -58,12 +58,23 @@
             gradientPanel1.Size = new Size(908, 485);
             gradientPanel1.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(444, 76);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(423, 335);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 9;
+            pictureBox1.TabStop = false;
+            // 
             // label3
             // 
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = SystemColors.ControlLightLight;
-            label3.Location = new Point(23, 234);
+            label3.Location = new Point(23, 211);
             label3.Name = "label3";
             label3.Size = new Size(428, 161);
             label3.TabIndex = 8;
@@ -75,7 +86,7 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Times New Roman", 16.8000011F, FontStyle.Bold);
             label2.ForeColor = SystemColors.ControlLightLight;
-            label2.Location = new Point(97, 178);
+            label2.Location = new Point(97, 172);
             label2.Name = "label2";
             label2.Size = new Size(272, 32);
             label2.TabIndex = 7;
@@ -87,24 +98,11 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Times New Roman", 16.8000011F, FontStyle.Bold);
             label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(165, 150);
+            label1.Location = new Point(165, 144);
             label1.Name = "label1";
             label1.Size = new Size(95, 32);
             label1.TabIndex = 6;
             label1.Text = "School";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(513, 96);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(343, 326);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 3;
-            pictureBox1.TabStop = false;
             // 
             // panel1
             // 
@@ -152,9 +150,9 @@
         private Panel panel1;
         private Panel panel2;
         private System.Windows.Forms.Timer timer1;
-        private PictureBox pictureBox1;
         private Label label2;
         private Label label1;
         private Label label3;
+        private PictureBox pictureBox1;
     }
 }

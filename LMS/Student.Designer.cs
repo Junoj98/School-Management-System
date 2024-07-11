@@ -34,11 +34,9 @@
             btnClear = new Button();
             btnNew = new Button();
             label9 = new Label();
-            btnEdit = new Button();
             txtSearch = new TextBox();
             cmbSearch = new ComboBox();
             btnHome = new Button();
-            btnGetStudent = new Button();
             btnCancel = new Button();
             btnUpdate = new Button();
             groupBox3 = new GroupBox();
@@ -70,9 +68,7 @@
             btnDelete = new Button();
             dgvStudent = new DataGridView();
             label1 = new Label();
-            btnAdd = new Button();
             btnGetData = new Button();
-            btnDataInsert = new Button();
             btnTestConnection = new Button();
             gradientPanel1.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -87,20 +83,16 @@
             gradientPanel1.Controls.Add(btnClear);
             gradientPanel1.Controls.Add(btnNew);
             gradientPanel1.Controls.Add(label9);
-            gradientPanel1.Controls.Add(btnEdit);
             gradientPanel1.Controls.Add(txtSearch);
             gradientPanel1.Controls.Add(cmbSearch);
             gradientPanel1.Controls.Add(btnHome);
-            gradientPanel1.Controls.Add(btnGetStudent);
             gradientPanel1.Controls.Add(btnCancel);
             gradientPanel1.Controls.Add(btnUpdate);
             gradientPanel1.Controls.Add(groupBox3);
             gradientPanel1.Controls.Add(btnDelete);
             gradientPanel1.Controls.Add(dgvStudent);
             gradientPanel1.Controls.Add(label1);
-            gradientPanel1.Controls.Add(btnAdd);
             gradientPanel1.Controls.Add(btnGetData);
-            gradientPanel1.Controls.Add(btnDataInsert);
             gradientPanel1.Controls.Add(btnTestConnection);
             gradientPanel1.Dock = DockStyle.Fill;
             gradientPanel1.Location = new Point(0, 0);
@@ -136,7 +128,7 @@
             btnNew.BackgroundImage = (Image)resources.GetObject("btnNew.BackgroundImage");
             btnNew.BackgroundImageLayout = ImageLayout.Zoom;
             btnNew.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnNew.Location = new Point(478, 55);
+            btnNew.Location = new Point(227, 55);
             btnNew.Name = "btnNew";
             btnNew.Size = new Size(61, 48);
             btnNew.TabIndex = 66;
@@ -151,18 +143,6 @@
             label9.Name = "label9";
             label9.Size = new Size(30, 27);
             label9.TabIndex = 65;
-            // 
-            // btnEdit
-            // 
-            btnEdit.BackgroundImage = (Image)resources.GetObject("btnEdit.BackgroundImage");
-            btnEdit.BackgroundImageLayout = ImageLayout.Zoom;
-            btnEdit.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEdit.Location = new Point(274, 55);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(61, 48);
-            btnEdit.TabIndex = 64;
-            btnEdit.UseVisualStyleBackColor = true;
-            btnEdit.Click += btnEdit_Click;
             // 
             // txtSearch
             // 
@@ -192,23 +172,12 @@
             btnHome.BackgroundImage = (Image)resources.GetObject("btnHome.BackgroundImage");
             btnHome.BackgroundImageLayout = ImageLayout.Zoom;
             btnHome.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnHome.Location = new Point(1090, 55);
+            btnHome.Location = new Point(294, 55);
             btnHome.Name = "btnHome";
             btnHome.Size = new Size(61, 48);
             btnHome.TabIndex = 61;
             btnHome.UseVisualStyleBackColor = true;
             btnHome.Click += btnHome_Click;
-            // 
-            // btnGetStudent
-            // 
-            btnGetStudent.BackgroundImage = (Image)resources.GetObject("btnGetStudent.BackgroundImage");
-            btnGetStudent.BackgroundImageLayout = ImageLayout.Zoom;
-            btnGetStudent.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGetStudent.Location = new Point(342, 55);
-            btnGetStudent.Name = "btnGetStudent";
-            btnGetStudent.Size = new Size(61, 48);
-            btnGetStudent.TabIndex = 60;
-            btnGetStudent.UseVisualStyleBackColor = true;
             // 
             // btnCancel
             // 
@@ -503,7 +472,7 @@
             btnDelete.BackgroundImage = (Image)resources.GetObject("btnDelete.BackgroundImage");
             btnDelete.BackgroundImageLayout = ImageLayout.Zoom;
             btnDelete.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDelete.Location = new Point(410, 55);
+            btnDelete.Location = new Point(160, 55);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(61, 48);
             btnDelete.TabIndex = 3;
@@ -536,48 +505,24 @@
             label1.Text = "Students Details Form";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // btnAdd
-            // 
-            btnAdd.BackgroundImage = (Image)resources.GetObject("btnAdd.BackgroundImage");
-            btnAdd.BackgroundImageLayout = ImageLayout.Zoom;
-            btnAdd.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAdd.Location = new Point(206, 54);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(61, 48);
-            btnAdd.TabIndex = 0;
-            btnAdd.UseVisualStyleBackColor = true;
-            btnAdd.Click += btnAdd_Click;
-            // 
             // btnGetData
             // 
             btnGetData.BackgroundImage = (Image)resources.GetObject("btnGetData.BackgroundImage");
             btnGetData.BackgroundImageLayout = ImageLayout.Zoom;
             btnGetData.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGetData.Location = new Point(138, 55);
+            btnGetData.Location = new Point(93, 55);
             btnGetData.Name = "btnGetData";
             btnGetData.Size = new Size(61, 48);
             btnGetData.TabIndex = 0;
             btnGetData.UseVisualStyleBackColor = true;
             btnGetData.Click += btnGetData_Click;
             // 
-            // btnDataInsert
-            // 
-            btnDataInsert.BackgroundImage = (Image)resources.GetObject("btnDataInsert.BackgroundImage");
-            btnDataInsert.BackgroundImageLayout = ImageLayout.Zoom;
-            btnDataInsert.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDataInsert.Location = new Point(70, 54);
-            btnDataInsert.Name = "btnDataInsert";
-            btnDataInsert.Size = new Size(61, 48);
-            btnDataInsert.TabIndex = 0;
-            btnDataInsert.UseVisualStyleBackColor = true;
-            btnDataInsert.Click += btnDataInsert_Click;
-            // 
             // btnTestConnection
             // 
             btnTestConnection.BackgroundImage = (Image)resources.GetObject("btnTestConnection.BackgroundImage");
             btnTestConnection.BackgroundImageLayout = ImageLayout.Zoom;
             btnTestConnection.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnTestConnection.Location = new Point(2, 54);
+            btnTestConnection.Location = new Point(26, 54);
             btnTestConnection.Name = "btnTestConnection";
             btnTestConnection.Size = new Size(61, 48);
             btnTestConnection.TabIndex = 0;
@@ -609,10 +554,8 @@
         private GradientPanel gradientPanel1;
         private Button btnTestConnection;
         private Label label1;
-        private Button btnDataInsert;
         private Button btnGetData;
         private DataGridView dgvStudent;
-        private Button btnAdd;
         private Button btnDelete;
         private GroupBox groupBox3;
         private Label lblFirstName;
@@ -636,7 +579,6 @@
         private TextBox txtAddress;
         private Button btnUpdate;
         private Button btnCancel;
-        private Button btnGetStudent;
         private DateTimePicker dtpDateofAdmission;
         private Label label12;
         private TextBox txtMedium;
@@ -645,7 +587,6 @@
         private Button btnHome;
         private TextBox txtSearch;
         private ComboBox cmbSearch;
-        private Button btnEdit;
         private Label label9;
         private Button btnNew;
         private Button btnClear;

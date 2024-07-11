@@ -33,12 +33,9 @@
             btnClear = new Button();
             btnNew = new Button();
             label9 = new Label();
-            btnEdit = new Button();
             txtSearch = new TextBox();
             cmbSearch = new ComboBox();
             btnHome = new Button();
-            btnGetTeacher = new Button();
-            btnCancel = new Button();
             btnUpdate = new Button();
             groupBox3 = new GroupBox();
             label5 = new Label();
@@ -66,9 +63,7 @@
             lblFirstName = new Label();
             btnDelete = new Button();
             dgvTeacher = new DataGridView();
-            btnAdd = new Button();
             btnGetData = new Button();
-            btnDataInsert = new Button();
             btnTestConnection = new Button();
             label1 = new Label();
             gradientPanel1.SuspendLayout();
@@ -83,19 +78,14 @@
             gradientPanel1.Controls.Add(btnClear);
             gradientPanel1.Controls.Add(btnNew);
             gradientPanel1.Controls.Add(label9);
-            gradientPanel1.Controls.Add(btnEdit);
             gradientPanel1.Controls.Add(txtSearch);
             gradientPanel1.Controls.Add(cmbSearch);
             gradientPanel1.Controls.Add(btnHome);
-            gradientPanel1.Controls.Add(btnGetTeacher);
-            gradientPanel1.Controls.Add(btnCancel);
             gradientPanel1.Controls.Add(btnUpdate);
             gradientPanel1.Controls.Add(groupBox3);
             gradientPanel1.Controls.Add(btnDelete);
             gradientPanel1.Controls.Add(dgvTeacher);
-            gradientPanel1.Controls.Add(btnAdd);
             gradientPanel1.Controls.Add(btnGetData);
-            gradientPanel1.Controls.Add(btnDataInsert);
             gradientPanel1.Controls.Add(btnTestConnection);
             gradientPanel1.Controls.Add(label1);
             gradientPanel1.Dock = DockStyle.Fill;
@@ -121,7 +111,7 @@
             btnNew.BackgroundImage = (Image)resources.GetObject("btnNew.BackgroundImage");
             btnNew.BackgroundImageLayout = ImageLayout.Zoom;
             btnNew.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnNew.Location = new Point(480, 72);
+            btnNew.Location = new Point(208, 73);
             btnNew.Name = "btnNew";
             btnNew.Size = new Size(61, 48);
             btnNew.TabIndex = 81;
@@ -136,18 +126,6 @@
             label9.Name = "label9";
             label9.Size = new Size(30, 27);
             label9.TabIndex = 80;
-            // 
-            // btnEdit
-            // 
-            btnEdit.BackgroundImage = (Image)resources.GetObject("btnEdit.BackgroundImage");
-            btnEdit.BackgroundImageLayout = ImageLayout.Zoom;
-            btnEdit.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEdit.Location = new Point(276, 72);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(61, 48);
-            btnEdit.TabIndex = 79;
-            btnEdit.UseVisualStyleBackColor = true;
-            btnEdit.Click += btnEdit_Click;
             // 
             // txtSearch
             // 
@@ -177,38 +155,17 @@
             btnHome.BackgroundImage = (Image)resources.GetObject("btnHome.BackgroundImage");
             btnHome.BackgroundImageLayout = ImageLayout.Zoom;
             btnHome.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnHome.Location = new Point(1094, 73);
+            btnHome.Location = new Point(275, 72);
             btnHome.Name = "btnHome";
             btnHome.Size = new Size(61, 48);
             btnHome.TabIndex = 76;
             btnHome.UseVisualStyleBackColor = true;
             btnHome.Click += btnHome_Click;
             // 
-            // btnGetTeacher
-            // 
-            btnGetTeacher.BackgroundImage = (Image)resources.GetObject("btnGetTeacher.BackgroundImage");
-            btnGetTeacher.BackgroundImageLayout = ImageLayout.Zoom;
-            btnGetTeacher.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGetTeacher.Location = new Point(344, 72);
-            btnGetTeacher.Name = "btnGetTeacher";
-            btnGetTeacher.Size = new Size(61, 48);
-            btnGetTeacher.TabIndex = 75;
-            btnGetTeacher.UseVisualStyleBackColor = true;
-            // 
-            // btnCancel
-            // 
-            btnCancel.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCancel.Location = new Point(994, 561);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(107, 39);
-            btnCancel.TabIndex = 74;
-            btnCancel.Text = "Cancel";
-            btnCancel.UseVisualStyleBackColor = true;
-            // 
             // btnUpdate
             // 
             btnUpdate.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnUpdate.Location = new Point(879, 561);
+            btnUpdate.Location = new Point(887, 561);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(107, 39);
             btnUpdate.TabIndex = 73;
@@ -468,7 +425,7 @@
             btnDelete.BackgroundImage = (Image)resources.GetObject("btnDelete.BackgroundImage");
             btnDelete.BackgroundImageLayout = ImageLayout.Zoom;
             btnDelete.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDelete.Location = new Point(412, 72);
+            btnDelete.Location = new Point(141, 73);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(61, 48);
             btnDelete.TabIndex = 71;
@@ -489,49 +446,24 @@
             dgvTeacher.TabIndex = 70;
             dgvTeacher.SelectionChanged += dgvTeacher_SelectionChanged;
             // 
-            // btnAdd
-            // 
-            btnAdd.BackColor = SystemColors.Control;
-            btnAdd.BackgroundImage = (Image)resources.GetObject("btnAdd.BackgroundImage");
-            btnAdd.BackgroundImageLayout = ImageLayout.Zoom;
-            btnAdd.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAdd.Location = new Point(208, 72);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(61, 48);
-            btnAdd.TabIndex = 66;
-            btnAdd.UseVisualStyleBackColor = false;
-            btnAdd.Click += btnAdd_Click;
-            // 
             // btnGetData
             // 
             btnGetData.BackgroundImage = (Image)resources.GetObject("btnGetData.BackgroundImage");
             btnGetData.BackgroundImageLayout = ImageLayout.Zoom;
             btnGetData.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGetData.Location = new Point(140, 72);
+            btnGetData.Location = new Point(74, 73);
             btnGetData.Name = "btnGetData";
             btnGetData.Size = new Size(61, 48);
             btnGetData.TabIndex = 67;
             btnGetData.UseVisualStyleBackColor = true;
             btnGetData.Click += btnGetData_Click;
             // 
-            // btnDataInsert
-            // 
-            btnDataInsert.BackgroundImage = (Image)resources.GetObject("btnDataInsert.BackgroundImage");
-            btnDataInsert.BackgroundImageLayout = ImageLayout.Zoom;
-            btnDataInsert.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDataInsert.Location = new Point(72, 72);
-            btnDataInsert.Name = "btnDataInsert";
-            btnDataInsert.Size = new Size(61, 48);
-            btnDataInsert.TabIndex = 68;
-            btnDataInsert.UseVisualStyleBackColor = true;
-            btnDataInsert.Click += btnDataInsert_Click;
-            // 
             // btnTestConnection
             // 
             btnTestConnection.BackgroundImage = (Image)resources.GetObject("btnTestConnection.BackgroundImage");
             btnTestConnection.BackgroundImageLayout = ImageLayout.Zoom;
             btnTestConnection.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnTestConnection.Location = new Point(4, 72);
+            btnTestConnection.Location = new Point(7, 72);
             btnTestConnection.Name = "btnTestConnection";
             btnTestConnection.Size = new Size(61, 48);
             btnTestConnection.TabIndex = 69;
