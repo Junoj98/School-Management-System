@@ -15,12 +15,14 @@ namespace LMS
             label1.BackColor = Color.Transparent;
             pictureBox1.Parent = gradientPanel1;
             pictureBox1.BackColor = Color.Transparent;
+            btnLogout.Parent = gradientPanel1;
+            btnLogout.BackColor = Color.Transparent;
         }
 
         private void btnStudent_Click(object sender, EventArgs e)
         {
             Student student = new Student();
-            student.ShowDialog();
+            student.Show();
             this.Hide();
 
         }
@@ -28,7 +30,7 @@ namespace LMS
         private void btnTeacher_Click(object sender, EventArgs e)
         {
             Teacher teacher = new Teacher();
-            teacher.ShowDialog();
+            teacher.Show();
             this.Hide();
 
         }
@@ -36,7 +38,7 @@ namespace LMS
         private void btnGrade_Click(object sender, EventArgs e)
         {
             Grade grade = new Grade();
-            grade.ShowDialog();
+            grade.Show();
             this.Hide();
 
         }
@@ -44,14 +46,28 @@ namespace LMS
         private void btnSubject_Click(object sender, EventArgs e)
         {
             Subject subject = new Subject();
-            subject.ShowDialog();
+            subject.Show();
             this.Hide();
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        private void btnGradeSubject_Click(object sender, EventArgs e)
+        {
+            GradeSubject gradeSubject = new GradeSubject();
+            gradeSubject.Show();
+            this.Hide();
+        }
+
+        private void btnStudentSubject_Click(object sender, EventArgs e)
+        {
+            StudentSubject studentSubject = new StudentSubject();
+            studentSubject.Show();
+            this.Hide();
+        }
+
+        private void btnLogout_Click_1(object sender, EventArgs e)
         {
             Login login = new Login();
-            login.ShowDialog();
+            login.Show();
             this.Hide();
         }
     }

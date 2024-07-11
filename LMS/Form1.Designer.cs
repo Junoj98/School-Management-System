@@ -30,13 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             gradientPanel1 = new GradientPanel();
-            btnLogout = new Button();
+            btnStudentSubject = new Button();
             pictureBox1 = new PictureBox();
             btnSubject = new Button();
             btnGrade = new Button();
             btnTeacher = new Button();
+            btnGradeSubject = new Button();
             btnStudent = new Button();
             label1 = new Label();
+            btnLogout = new Button();
             gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -46,37 +48,37 @@
             gradientPanel1.ColorBottom = Color.FromArgb(4, 87, 122);
             gradientPanel1.ColorTop = Color.Teal;
             gradientPanel1.Controls.Add(btnLogout);
+            gradientPanel1.Controls.Add(btnStudentSubject);
             gradientPanel1.Controls.Add(pictureBox1);
             gradientPanel1.Controls.Add(btnSubject);
             gradientPanel1.Controls.Add(btnGrade);
             gradientPanel1.Controls.Add(btnTeacher);
+            gradientPanel1.Controls.Add(btnGradeSubject);
             gradientPanel1.Controls.Add(btnStudent);
             gradientPanel1.Controls.Add(label1);
             gradientPanel1.Dock = DockStyle.Fill;
             gradientPanel1.Location = new Point(0, 0);
             gradientPanel1.Name = "gradientPanel1";
-            gradientPanel1.Size = new Size(969, 498);
+            gradientPanel1.Size = new Size(827, 489);
             gradientPanel1.TabIndex = 0;
             // 
-            // btnLogout
+            // btnStudentSubject
             // 
-            btnLogout.BackColor = Color.Transparent;
-            btnLogout.BackgroundImage = (Image)resources.GetObject("btnLogout.BackgroundImage");
-            btnLogout.BackgroundImageLayout = ImageLayout.Zoom;
-            btnLogout.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLogout.Location = new Point(881, 40);
-            btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(67, 59);
-            btnLogout.TabIndex = 82;
-            btnLogout.UseVisualStyleBackColor = false;
-            btnLogout.Click += btnLogout_Click;
+            btnStudentSubject.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnStudentSubject.Location = new Point(340, 263);
+            btnStudentSubject.Name = "btnStudentSubject";
+            btnStudentSubject.Size = new Size(172, 84);
+            btnStudentSubject.TabIndex = 3;
+            btnStudentSubject.Text = "Student Subject";
+            btnStudentSubject.UseVisualStyleBackColor = true;
+            btnStudentSubject.Click += btnStudentSubject_Click;
             // 
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(93, 93);
+            pictureBox1.Location = new Point(12, 99);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(258, 239);
             pictureBox1.TabIndex = 2;
@@ -84,10 +86,10 @@
             // 
             // btnSubject
             // 
-            btnSubject.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSubject.Location = new Point(673, 173);
+            btnSubject.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            btnSubject.Location = new Point(542, 173);
             btnSubject.Name = "btnSubject";
-            btnSubject.Size = new Size(123, 94);
+            btnSubject.Size = new Size(109, 84);
             btnSubject.TabIndex = 1;
             btnSubject.Text = "Subject";
             btnSubject.UseVisualStyleBackColor = true;
@@ -95,10 +97,10 @@
             // 
             // btnGrade
             // 
-            btnGrade.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGrade.Location = new Point(815, 173);
+            btnGrade.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            btnGrade.Location = new Point(663, 173);
             btnGrade.Name = "btnGrade";
-            btnGrade.Size = new Size(123, 94);
+            btnGrade.Size = new Size(109, 84);
             btnGrade.TabIndex = 1;
             btnGrade.Text = "Grade";
             btnGrade.UseVisualStyleBackColor = true;
@@ -106,22 +108,34 @@
             // 
             // btnTeacher
             // 
-            btnTeacher.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnTeacher.Location = new Point(531, 173);
+            btnTeacher.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            btnTeacher.Location = new Point(421, 173);
             btnTeacher.Name = "btnTeacher";
-            btnTeacher.Size = new Size(123, 94);
+            btnTeacher.Size = new Size(109, 84);
             btnTeacher.TabIndex = 1;
             btnTeacher.Text = "Teachers";
             btnTeacher.UseVisualStyleBackColor = true;
             btnTeacher.Click += btnTeacher_Click;
             // 
+            // btnGradeSubject
+            // 
+            btnGradeSubject.BackColor = SystemColors.Control;
+            btnGradeSubject.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            btnGradeSubject.Location = new Point(566, 263);
+            btnGradeSubject.Name = "btnGradeSubject";
+            btnGradeSubject.Size = new Size(172, 84);
+            btnGradeSubject.TabIndex = 1;
+            btnGradeSubject.Text = "Grade Subject";
+            btnGradeSubject.UseVisualStyleBackColor = false;
+            btnGradeSubject.Click += btnGradeSubject_Click;
+            // 
             // btnStudent
             // 
             btnStudent.BackColor = SystemColors.Control;
-            btnStudent.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnStudent.Location = new Point(389, 173);
+            btnStudent.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            btnStudent.Location = new Point(300, 173);
             btnStudent.Name = "btnStudent";
-            btnStudent.Size = new Size(123, 94);
+            btnStudent.Size = new Size(109, 84);
             btnStudent.TabIndex = 1;
             btnStudent.Text = "Students";
             btnStudent.UseVisualStyleBackColor = false;
@@ -131,19 +145,30 @@
             // 
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Times New Roman", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ActiveCaptionText;
+            label1.ForeColor = SystemColors.ControlLightLight;
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
-            label1.Size = new Size(969, 47);
+            label1.Size = new Size(827, 47);
             label1.TabIndex = 0;
             label1.Text = "School Management System";
             label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // btnLogout
+            // 
+            btnLogout.BackgroundImage = (Image)resources.GetObject("btnLogout.BackgroundImage");
+            btnLogout.BackgroundImageLayout = ImageLayout.Stretch;
+            btnLogout.Location = new Point(713, 50);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(53, 49);
+            btnLogout.TabIndex = 4;
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click_1;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(969, 498);
+            ClientSize = new Size(827, 489);
             Controls.Add(gradientPanel1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "Form1";
@@ -165,6 +190,8 @@
         private PictureBox pictureBox1;
         private Button btnSubject;
         private Button btnHome;
+        private Button btnGradeSubject;
+        private Button btnStudentSubject;
         private Button btnLogout;
     }
 }

@@ -22,7 +22,7 @@ namespace LMS
             InitializeComponent();
         }
 
-        
+
         private void Student_Load(object sender, EventArgs e)
         {
             label1.Parent = gradientPanel1;
@@ -256,23 +256,23 @@ namespace LMS
                 SqlConnection cnn = new SqlConnection(connetionString);
                 connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlCommand command;
-               // command = cnn.CreateCommand();  
-               // string selectedGradeId = cmbGradeId.SelectedItem?.ToString();
-               // if (string.IsNullOrEmpty(selectedGradeId))
-               // {
-               //     MessageBox.Show("Please select a grade.");
-               //     return;
-               // }
+                // command = cnn.CreateCommand();  
+                // string selectedGradeId = cmbGradeId.SelectedItem?.ToString();
+                // if (string.IsNullOrEmpty(selectedGradeId))
+                // {
+                //     MessageBox.Show("Please select a grade.");
+                //     return;
+                // }
 
-               // // Inside your SQL query building
-               // string sql = @"INSERT INTO [students] ([first_name],[last_name],[full_name],[gender],[date_of_birth],[admission_no],[stu_nic_no],[telephone_no],[address],[grade_id],[medium],[date_of_admission],[created_at])
-               //VALUES (@FirstName, @LastName, @FullName, @Gender, @DOB, @AdmissionNo, @NicNo, @TelephoneNo, @Address, @GradeId, @Medium, @DateOfAdmission, @CreatedAt)";
+                // // Inside your SQL query building
+                // string sql = @"INSERT INTO [students] ([first_name],[last_name],[full_name],[gender],[date_of_birth],[admission_no],[stu_nic_no],[telephone_no],[address],[grade_id],[medium],[date_of_admission],[created_at])
+                //VALUES (@FirstName, @LastName, @FullName, @Gender, @DOB, @AdmissionNo, @NicNo, @TelephoneNo, @Address, @GradeId, @Medium, @DateOfAdmission, @CreatedAt)";
 
-               // command.Parameters.AddWithValue("@GradeId", selectedGradeId);
+                // command.Parameters.AddWithValue("@GradeId", selectedGradeId);
 
 
 
-                string sql = "INSERT INTO [students] ([first_name],[last_name],[full_name],[gender],[date_of_birth],[admission_no],[stu_nic_no],[telephone_no],[address],[grade_id],[medium],[date_of_admission],[created_at])VALUES('" + txtFirstName.Text + "','" + txtLastName.Text + "','" + txtFullName.Text + "','" + Gender + "','" + dtpDob.Text + "','" + txtAdmissionNo.Text + "','" + txtNicNo.Text + "','" + txtTelephoneNo.Text + "','" + txtAddress.Text + "','" + cmbGradeId.Text + "','" + txtMedium.Text + "','" + dtpDateofAdmission.Text + "','"+DateTime.Now+"' )";
+                string sql = "INSERT INTO [students] ([first_name],[last_name],[full_name],[gender],[date_of_birth],[admission_no],[stu_nic_no],[telephone_no],[address],[grade_id],[medium],[date_of_admission],[created_at])VALUES('" + txtFirstName.Text + "','" + txtLastName.Text + "','" + txtFullName.Text + "','" + Gender + "','" + dtpDob.Text + "','" + txtAdmissionNo.Text + "','" + txtNicNo.Text + "','" + txtTelephoneNo.Text + "','" + txtAddress.Text + "','" + cmbGradeId.Text + "','" + txtMedium.Text + "','" + dtpDateofAdmission.Text + "','" + DateTime.Now + "' )";
                 cnn = new SqlConnection(connetionString);
                 try
                 {
@@ -302,7 +302,7 @@ namespace LMS
                 SqlConnection cnn = new SqlConnection(connetionString);
                 connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlCommand command;
-                string sql = "UPDATE [students] SET [first_name]='" + txtFirstName.Text + "',[last_name]='" + txtLastName.Text + "',[full_name]='" + txtFullName.Text + "',[gender] = '" + Gender + "',[date_of_birth]='" + dtpDob.Text + "',[admission_no]='" + txtAdmissionNo.Text + "',[stu_nic_no]='" + txtNicNo.Text + "',[telephone_no]='" + txtTelephoneNo.Text + "',[grade_id]='" + cmbGradeId.SelectedItem.ToString() + "',[medium]='" + txtMedium.Text + "',[date_of_admission]='" + dtpDateofAdmission.Text + "',[address]='" + txtAddress.Text + "',[updated_at] = '"+DateTime.Now+"' WHERE [id]='" + this.id + "'";
+                string sql = "UPDATE [students] SET [first_name]='" + txtFirstName.Text + "',[last_name]='" + txtLastName.Text + "',[full_name]='" + txtFullName.Text + "',[gender] = '" + Gender + "',[date_of_birth]='" + dtpDob.Text + "',[admission_no]='" + txtAdmissionNo.Text + "',[stu_nic_no]='" + txtNicNo.Text + "',[telephone_no]='" + txtTelephoneNo.Text + "',[grade_id]='" + cmbGradeId.SelectedItem.ToString() + "',[medium]='" + txtMedium.Text + "',[date_of_admission]='" + dtpDateofAdmission.Text + "',[address]='" + txtAddress.Text + "',[updated_at] = '" + DateTime.Now + "' WHERE [id]='" + this.id + "'";
                 cnn = new SqlConnection(connetionString);
                 try
                 {
@@ -361,6 +361,12 @@ namespace LMS
         {
             txtSearch.Clear();
             cmbSearch.SelectedIndex = -1;
+        }
+
+        private void btnStudentSubjects_Click(object sender, EventArgs e)
+        {
+            StudentSubject studentSubject = new StudentSubject();
+            studentSubject.Show();
         }
     }
 }

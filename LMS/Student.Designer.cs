@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Student));
             gradientPanel1 = new GradientPanel();
+            btnStudentSubjects = new Button();
             btnClear = new Button();
             btnNew = new Button();
             label9 = new Label();
@@ -82,6 +83,7 @@
             // 
             gradientPanel1.ColorBottom = Color.FromArgb(4, 87, 122);
             gradientPanel1.ColorTop = Color.Teal;
+            gradientPanel1.Controls.Add(btnStudentSubjects);
             gradientPanel1.Controls.Add(btnClear);
             gradientPanel1.Controls.Add(btnNew);
             gradientPanel1.Controls.Add(label9);
@@ -105,6 +107,17 @@
             gradientPanel1.Name = "gradientPanel1";
             gradientPanel1.Size = new Size(1343, 624);
             gradientPanel1.TabIndex = 0;
+            // 
+            // btnStudentSubjects
+            // 
+            btnStudentSubjects.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnStudentSubjects.Location = new Point(1164, 59);
+            btnStudentSubjects.Name = "btnStudentSubjects";
+            btnStudentSubjects.Size = new Size(167, 38);
+            btnStudentSubjects.TabIndex = 86;
+            btnStudentSubjects.Text = "Student Subjects";
+            btnStudentSubjects.UseVisualStyleBackColor = true;
+            btnStudentSubjects.Click += btnStudentSubjects_Click;
             // 
             // btnClear
             // 
@@ -637,5 +650,6 @@
         private Button btnNew;
         private Button btnClear;
         private ComboBox cmbGradeId;
+        private Button btnStudentSubjects;
     }
 }
