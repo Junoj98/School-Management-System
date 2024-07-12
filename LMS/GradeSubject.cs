@@ -168,7 +168,7 @@ namespace LMS
                 SqlConnection cnn = new SqlConnection(connetionString);
                 connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlCommand command;
-                string sql = "INSERT INTO [grade_subjects] ([subject_id],[grade_id],[created_at])VALUES('" + cmbSubjectId.Text + "','" + cmbGradeId.Text + "','" + DateTime.Now + "' )";
+                string sql = "INSERT INTO [grade_subjects] ([subject_id],[grade_id])VALUES('" + cmbSubjectId.SelectedValue + "','" + cmbGradeId.SelectedValue + "' )";
                 cnn = new SqlConnection(connetionString);
                 try
                 {
@@ -190,7 +190,7 @@ namespace LMS
                 SqlConnection cnn = new SqlConnection(connetionString);
                 connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlCommand command;
-                string sql = "UPDATE [grade_subjects] SET [subject_id]='" + cmbSubjectId.Text + "',[grade_id]='" + cmbGradeId.Text + "',[updated_at] = '" + DateTime.Now + "' WHERE [id]='" + this.id + "'";
+                string sql = "UPDATE [grade_subjects] SET [subject_id]='" + cmbSubjectId.SelectedValue + "',[grade_id]='" + cmbGradeId.SelectedValue + "' WHERE [id]='" + this.id + "'";
                 cnn = new SqlConnection(connetionString);
                 try
                 {
@@ -216,12 +216,12 @@ namespace LMS
                 DataGridViewRow selectedRows = dgvGradeSubject.SelectedRows[0];
 
                 this.id = selectedRows.Cells["id"].Value.ToString();
-                string subjectid = selectedRows.Cells["subject_id"].Value.ToString();
-                string gradeid = selectedRows.Cells["grade_id"].Value.ToString();
+                object subjectid = selectedRows.Cells["subject_id"].Value;
+                object gradeid = selectedRows.Cells["grade_id"].Value;
 
 
-                cmbSubjectId.Text = subjectid;
-                cmbGradeId.Text = gradeid;
+                cmbSubjectId.SelectedValue = subjectid;
+                cmbGradeId.SelectedValue = gradeid;
             }
         }
 
@@ -238,15 +238,55 @@ namespace LMS
                 cnn.Open();
                 command = new SqlCommand(sql, cnn);
                 SqlDataReader sqlReader = command.ExecuteReader();
-                // while (sqlReader.Read())
-                //{
-                //  MessageBox.Show(sqlReader.GetValue(0)+"-"+ sqlReader.GetValue(1) + "-" + sqlReader.GetValue(2) + "-" + sqlReader.GetValue(3) + "-" + sqlReader.GetValue(4) + "-" + sqlReader.GetValue(5));
-                // }
                 DataTable dt = new DataTable();
 
                 dt.Load(sqlReader);
 
                 dgvGradeSubject.DataSource = dt;
+                sqlReader.Close();
+                command.Dispose();
+                cnn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not open connection ! ");
+            }
+
+            string sql1 = "select * from grades";
+
+            try
+            {
+                cnn.Open();
+                command = new SqlCommand(sql1, cnn);
+                SqlDataReader sqlReader = command.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(sqlReader);
+                dgvGradeSubject.DataSource = dt;
+                cmbGradeId.SelectedIndex = 0;
+                cmbGradeId.DisplayMember = "id";
+                cmbGradeId.ValueMember = "id";
+                sqlReader.Close();
+                command.Dispose();
+                cnn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not open connection ! ");
+            }
+
+            string sql2 = "select * from subjects";
+
+            try
+            {
+                cnn.Open();
+                command = new SqlCommand(sql2, cnn);
+                SqlDataReader sqlReader = command.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(sqlReader);
+                dgvGradeSubject.DataSource = dt;
+                cmbSubjectId.SelectedIndex = 0;
+                cmbSubjectId.DisplayMember = "id";
+                cmbSubjectId.ValueMember = "id";
                 sqlReader.Close();
                 command.Dispose();
                 cnn.Close();

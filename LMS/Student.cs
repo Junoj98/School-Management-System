@@ -108,27 +108,27 @@ namespace LMS
 
         }
 
-        private void btnDataInsert_Click(object sender, EventArgs e)
-        {
-            string connetionString = null;
-            SqlConnection cnn = new SqlConnection(connetionString);
-            connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
-            SqlCommand command;
-            string sql = "INSERT INTO [students] ([first_name],[last_name],[full_name],[gender],[date_of_birth],[admission_no],[stu_nic_no],[telephone_no],[grade_id],[medium],[date_of_admission],[address])VALUES('Antonio','Griezmann','Antonio Griezmann','Male','12-05-2000','18APC3443','200803007v',0771222276,'0714','English','2021-01-15','Paris')";
-            cnn = new SqlConnection(connetionString);
-            try
-            {
-                cnn.Open();
-                command = new SqlCommand(sql, cnn);
-                command.ExecuteNonQuery();
-                MessageBox.Show("Connection Open ! ");
-                cnn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Can not open connection ! ");
-            }
-        }
+        //private void btnDataInsert_Click(object sender, EventArgs e)
+        //{
+        //    string connetionString = null;
+        //    SqlConnection cnn = new SqlConnection(connetionString);
+        //    connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
+        //    SqlCommand command;
+        //    string sql = "INSERT INTO [students] ([first_name],[last_name],[full_name],[gender],[date_of_birth],[admission_no],[stu_nic_no],[telephone_no],[grade_id],[medium],[date_of_admission],[address])VALUES('Antonio','Griezmann','Antonio Griezmann','Male','12-05-2000','18APC3443','200803007v',0771222276,'0714','English','2021-01-15','Paris')";
+        //    cnn = new SqlConnection(connetionString);
+        //    try
+        //    {
+        //        cnn.Open();
+        //        command = new SqlCommand(sql, cnn);
+        //        command.ExecuteNonQuery();
+        //        MessageBox.Show("Connection Open ! ");
+        //        cnn.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Can not open connection ! ");
+        //    }
+        //}
 
         private void btnGetData_Click(object sender, EventArgs e)
         {

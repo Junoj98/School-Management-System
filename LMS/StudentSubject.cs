@@ -164,7 +164,7 @@ namespace LMS
                 SqlConnection cnn = new SqlConnection(connetionString);
                 connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlCommand command;
-                string sql = "INSERT INTO [student_subjects] ([subject_id],[admission_no],[created_at])VALUES('" + cmbSubjectId.SelectedValue + "','" + cmbAdmissionNo.SelectedValue + "','" + DateTime.Now + "' )";
+                string sql = "INSERT INTO [student_subjects] ([subject_id],[stu_admission_no])VALUES('" + cmbSubjectId.SelectedValue + "','" + cmbAdmissionNo.SelectedValue + "' )";
                 cnn = new SqlConnection(connetionString);
                 try
                 {
@@ -186,7 +186,7 @@ namespace LMS
                 SqlConnection cnn = new SqlConnection(connetionString);
                 connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlCommand command;
-                string sql = "UPDATE [student_subjects] SET [subject_id]='" + cmbSubjectId.SelectedValue + "',[admission_no]='" + cmbAdmissionNo.SelectedValue + "',[updated_at] = '" + DateTime.Now + "' WHERE [id]='" + this.id + "'";
+                string sql = "UPDATE [student_subjects] SET [subject_id]='" + cmbSubjectId.SelectedValue + "',[stu_admission_no]='" + cmbAdmissionNo.SelectedValue + "' WHERE [id]='" + this.id + "'";
                 cnn = new SqlConnection(connetionString);
                 try
                 {
@@ -213,7 +213,7 @@ namespace LMS
 
                 this.id = selectedRows.Cells["id"].Value.ToString();
                 object subjectid = selectedRows.Cells["subject_id"].Value;
-                object admissionno = selectedRows.Cells["admission_no"].Value.ToString();
+                object admissionno = selectedRows.Cells["stu_admission_no"].Value;
 
 
                 cmbSubjectId.SelectedValue = subjectid;
@@ -223,73 +223,87 @@ namespace LMS
 
         private void StudentSubject_Load(object sender, EventArgs e)
         {
-            string connetionString = null;
-            connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
-            SqlConnection cnn = new SqlConnection(connetionString);
-            SqlCommand command;
+            string connectionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
+
+            // Load data into dgvStudentSubject from student_subjects
             string sql = "select * from student_subjects";
-
-            try
+            using (SqlConnection cnn = new SqlConnection(connectionString))
             {
-                cnn.Open();
-                command = new SqlCommand(sql, cnn);
-                SqlDataReader sqlReader = command.ExecuteReader();
-                DataTable dt = new DataTable();
-
-                dt.Load(sqlReader);
-
-                dgvStudentSubject.DataSource = dt;
-                sqlReader.Close();
-                command.Dispose();
-                cnn.Close();
+                try
+                {
+                    cnn.Open();
+                    using (SqlCommand command = new SqlCommand(sql, cnn))
+                    {
+                        using (SqlDataReader sqlReader = command.ExecuteReader())
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Load(sqlReader);
+                            dgvStudentSubject.DataSource = dt;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Cannot open connection: " + ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Can not open connection ! ");
-            }
 
+            // Load data into cmbSubjectId from subjects
             string sql1 = "select * from subjects";
-
-            try
+            using (SqlConnection cnn = new SqlConnection(connectionString))
             {
-                cnn.Open();
-                command = new SqlCommand(sql1, cnn);
-                SqlDataReader sqlReader = command.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(sqlReader);
-                dgvStudentSubject.DataSource = dt;
-                cmbSubjectId.SelectedIndex = 0;
-                cmbSubjectId.DisplayMember = "id";
-                cmbSubjectId.ValueMember = "id";
-                sqlReader.Close();
-                command.Dispose();
-                cnn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Can not open connection ! ");
+                try
+                {
+                    cnn.Open();
+                    using (SqlCommand command = new SqlCommand(sql1, cnn))
+                    {
+                        using (SqlDataReader sqlReader = command.ExecuteReader())
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Load(sqlReader);
+                            cmbSubjectId.DataSource = dt;
+                            cmbSubjectId.DisplayMember = "id";
+                            cmbSubjectId.ValueMember = "id";
+                            if (dt.Rows.Count > 0)
+                            {
+                                cmbSubjectId.SelectedIndex = 0;
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Cannot open connection: " + ex.Message);
+                }
             }
 
+            // Load data into cmbAdmissionNo from students
             string sql2 = "select * from students";
-
-            try
+            using (SqlConnection cnn = new SqlConnection(connectionString))
             {
-                cnn.Open();
-                command = new SqlCommand(sql2, cnn);
-                SqlDataReader sqlReader = command.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(sqlReader);
-                dgvStudentSubject.DataSource = dt;
-                cmbAdmissionNo.SelectedIndex = 0;
-                cmbAdmissionNo.DisplayMember = "admission_no";
-                cmbAdmissionNo.ValueMember = "id";
-                sqlReader.Close();
-                command.Dispose();
-                cnn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Can not open connection ! ");
+                try
+                {
+                    cnn.Open();
+                    using (SqlCommand command = new SqlCommand(sql2, cnn))
+                    {
+                        using (SqlDataReader sqlReader = command.ExecuteReader())
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Load(sqlReader);
+                            cmbAdmissionNo.DataSource = dt;
+                            cmbAdmissionNo.DisplayMember = "admission_no";
+                            cmbAdmissionNo.ValueMember = "id";
+                            if (dt.Rows.Count > 0)
+                            {
+                                cmbAdmissionNo.SelectedIndex = 0;
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Cannot open connection: " + ex.Message);
+                }
             }
         }
     }
