@@ -17,6 +17,7 @@ namespace LMS
         public Login()
         {
             InitializeComponent();
+            txtPassword.UseSystemPasswordChar = true;
         }
 
         private void Login_Load(object sender, EventArgs e)
