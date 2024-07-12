@@ -60,6 +60,7 @@ namespace LMS
 
                 dgvSubject.DataSource = dt;
                 sqlReader.Close();
+                SetColumnHeaders();
                 command.Dispose();
                 cnn.Close();
             }
@@ -189,6 +190,20 @@ namespace LMS
             }
         }
 
+        private void SetColumnHeaders()
+        {
+            dgvSubject.Columns["id"].HeaderText = "ID";
+            dgvSubject.Columns["subject_name"].HeaderText = "Subject Name";
+            dgvSubject.Columns["subject_index"].HeaderText = "Subject Index";
+            dgvSubject.Columns["subject_order"].HeaderText = "Subject Order";
+            dgvSubject.Columns["subject_number"].HeaderText = "Subject Number ";
+
+
+            foreach (DataGridViewColumn column in dgvSubject.Columns)
+            {
+                column.HeaderCell.Style.Font = new Font("Times New Roman", 10, FontStyle.Bold);
+            }
+        }
         private void btnEdit_Click(object sender, EventArgs e)
         {
 

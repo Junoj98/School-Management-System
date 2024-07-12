@@ -198,8 +198,6 @@ namespace LMS
             dgvGrade.Columns["grade_name"].HeaderText = "Grade Name";
             dgvGrade.Columns["grade_group"].HeaderText = "Grade Group";
             dgvGrade.Columns["grade_order"].HeaderText = "Grade Order";
-            ;
-
 
             foreach (DataGridViewColumn column in dgvGrade.Columns)
             {
