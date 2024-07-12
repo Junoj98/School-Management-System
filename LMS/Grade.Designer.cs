@@ -52,6 +52,7 @@
             button1 = new Button();
             btnTestConnection = new Button();
             label1 = new Label();
+            button2 = new Button();
             gradientPanel1.SuspendLayout();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvGrade).BeginInit();
@@ -61,6 +62,7 @@
             // 
             gradientPanel1.ColorBottom = Color.FromArgb(4, 87, 122);
             gradientPanel1.ColorTop = Color.Teal;
+            gradientPanel1.Controls.Add(button2);
             gradientPanel1.Controls.Add(btnGradeSubjects);
             gradientPanel1.Controls.Add(btnCancel);
             gradientPanel1.Controls.Add(btnUpdate);
@@ -327,6 +329,15 @@
             label1.Text = "Grade Details Form";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // button2
+            // 
+            button2.Location = new Point(1031, 160);
+            button2.Name = "button2";
+            button2.Size = new Size(94, 29);
+            button2.TabIndex = 86;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
+            // 
             // Grade
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -371,5 +382,6 @@
         private Button btnUpdate;
         private TextBox txtGradeOrder;
         private Button btnGradeSubjects;
+        private Button button2;
     }
 }
