@@ -64,6 +64,7 @@ namespace LMS
 
                 dgvGrade.DataSource = dt;
                 sqlReader.Close();
+                SetColumnHeaders();
                 command.Dispose();
                 cnn.Close();
             }
@@ -188,6 +189,21 @@ namespace LMS
                 txtGradeName.Text = gradename;
                 txtGradeGroup.Text = gradegroup;
                 txtGradeOrder.Text = gradeorder;
+            }
+        }
+
+        private void SetColumnHeaders()
+        {
+            dgvGrade.Columns["id"].HeaderText = "ID";
+            dgvGrade.Columns["grade_name"].HeaderText = "Grade Name";
+            dgvGrade.Columns["grade_group"].HeaderText = "Grade Group";
+            dgvGrade.Columns["grade_order"].HeaderText = "Grade Order";
+            ;
+
+
+            foreach (DataGridViewColumn column in dgvGrade.Columns)
+            {
+                column.HeaderCell.Style.Font = new Font("Times New Roman", 10, FontStyle.Bold);
             }
         }
 

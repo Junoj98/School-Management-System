@@ -71,7 +71,7 @@
             lblRegisterHere.AutoSize = true;
             lblRegisterHere.BackColor = Color.Transparent;
             lblRegisterHere.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblRegisterHere.ForeColor = SystemColors.ControlLightLight;
+            lblRegisterHere.ForeColor = Color.DeepSkyBlue;
             lblRegisterHere.Location = new Point(625, 381);
             lblRegisterHere.Name = "lblRegisterHere";
             lblRegisterHere.Size = new Size(114, 19);

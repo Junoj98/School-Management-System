@@ -244,6 +244,7 @@ namespace LMS
 
         private void SetColumnHeaders()
         {
+            dgvTeacher.Columns["id"].HeaderText = "ID";
             dgvTeacher.Columns["first_name"].HeaderText = "First Name";
             dgvTeacher.Columns["last_name"].HeaderText = "Last Name";
             dgvTeacher.Columns["full_name"].HeaderText = "Full Name";
@@ -255,10 +256,13 @@ namespace LMS
             dgvTeacher.Columns["telephone"].HeaderText = "Telephone";
             dgvTeacher.Columns["medium"].HeaderText = "Medium";
             dgvTeacher.Columns["date_of_join"].HeaderText = "Date of Join";
+            dgvTeacher.Columns["created_at"].HeaderText = "Created At";
+            dgvTeacher.Columns["updated_at"].HeaderText = "Updated At";
+
 
             foreach (DataGridViewColumn column in dgvTeacher.Columns)
             {
-                column.HeaderCell.Style.Font = new Font(dgvTeacher.Font, FontStyle.Bold);
+                column.HeaderCell.Style.Font = new Font("Times New Roman", 10, FontStyle.Bold);
             }
         }
 
@@ -290,7 +294,7 @@ namespace LMS
                 SqlConnection cnn = new SqlConnection(connetionString);
                 connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlCommand command;
-                string sql = "INSERT INTO [teachers] ([first_name],[last_name],[full_name],[gender],[dob],[nic],[email],[address],[telephone],[medium],[date_of_join],[created_at])VALUES('" + txtFirstName.Text + "','" + txtLastName.Text + "','" + txtFullName.Text + "','" + Gender + "','" + dtpDob.Text + "','" + txtNicNo.Text + "','" + txtEmail.Text + "','" + txtAddress.Text + "','" + txtTelephoneNo.Text + "','" + txtMedium.Text + "','" + dtpDateofJoin.Text + "','"+DateTime.Now+"' )";
+                string sql = "INSERT INTO [teachers] ([first_name],[last_name],[full_name],[gender],[dob],[nic],[email],[address],[telephone],[medium],[date_of_join],[created_at],[updated_at])VALUES('" + txtFirstName.Text + "','" + txtLastName.Text + "','" + txtFullName.Text + "','" + Gender + "','" + dtpDob.Text + "','" + txtNicNo.Text + "','" + txtEmail.Text + "','" + txtAddress.Text + "','" + txtTelephoneNo.Text + "','" + txtMedium.Text + "','" + dtpDateofJoin.Text + "','" + DateTime.Now + "','" + DateTime.Now + "')";
                 cnn = new SqlConnection(connetionString);
                 try
                 {

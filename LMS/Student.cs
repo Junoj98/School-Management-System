@@ -53,6 +53,7 @@ namespace LMS
 
                 dgvStudent.DataSource = dt;
                 sqlReader.Close();
+                SetColumnHeaders();
                 command.Dispose();
                 cnn.Close();
             }
@@ -256,6 +257,31 @@ namespace LMS
                 dtpDateofAdmission.Text = dateofadmission;
                 txtAddress.Text = address;
 
+            }
+        }
+
+        private void SetColumnHeaders()
+        {
+            dgvStudent.Columns["id"].HeaderText = "ID";
+            dgvStudent.Columns["first_name"].HeaderText = "First Name";
+            dgvStudent.Columns["last_name"].HeaderText = "Last Name";
+            dgvStudent.Columns["full_name"].HeaderText = "Full Name";
+            dgvStudent.Columns["gender"].HeaderText = "Gender";
+            dgvStudent.Columns["date_of_birth"].HeaderText = "Date of Birth";
+            dgvStudent.Columns["admission_no"].HeaderText = "Admission No";
+            dgvStudent.Columns["stu_nic_no"].HeaderText = "Student NIC No";
+            dgvStudent.Columns["address"].HeaderText = "Address";
+            dgvStudent.Columns["telephone_no"].HeaderText = "Telephone No";
+            dgvStudent.Columns["medium"].HeaderText = "Medium";
+            dgvStudent.Columns["grade_id"].HeaderText = "Grade ID";
+            dgvStudent.Columns["date_of_admission"].HeaderText = "Date of Admission";
+            dgvStudent.Columns["created_at"].HeaderText = "Created At";
+            dgvStudent.Columns["updated_at"].HeaderText = "Updated At";
+
+
+            foreach (DataGridViewColumn column in dgvStudent.Columns)
+            {
+                column.HeaderCell.Style.Font = new Font("Times New Roman", 10, FontStyle.Bold);
             }
         }
         private void btnEdit_Click(object sender, EventArgs e)
