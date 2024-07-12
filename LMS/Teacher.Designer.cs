@@ -371,8 +371,10 @@
             txtFullName.Font = new Font("Times New Roman", 10.8F);
             txtFullName.Location = new Point(131, 77);
             txtFullName.Name = "txtFullName";
+            txtFullName.ReadOnly = true;
             txtFullName.Size = new Size(224, 28);
             txtFullName.TabIndex = 6;
+            txtFullName.Enter += txtFullName_Enter;
             // 
             // label2
             // 

@@ -29,6 +29,8 @@ namespace LMS
             label1.Parent = gradientPanel1;
             label1.BackColor = Color.Transparent;
 
+            txtFullName.Enter += new EventHandler(txtFullName_Enter);
+
             string connetionString = null;
             connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
             SqlConnection cnn = new SqlConnection(connetionString);
@@ -39,7 +41,7 @@ namespace LMS
             {
                 cnn.Open();
                 command = new SqlCommand(sql, cnn);
-                SqlDataReader sqlReader = command.ExecuteReader(); 
+                SqlDataReader sqlReader = command.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(sqlReader);
                 dgvTeacher.DataSource = dt;
@@ -324,7 +326,7 @@ namespace LMS
                 SqlConnection cnn = new SqlConnection(connetionString);
                 connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlCommand command;
-                string sql = "UPDATE [teachers] SET [first_name]='" + txtFirstName.Text + "',[last_name]='" + txtLastName.Text + "',[full_name]='" + txtFullName.Text + "',[gender] = '" + Gender + "',[dob]='" + dtpDob.Text + "',[nic]='" + txtNicNo.Text + "',[email]='" + txtEmail.Text + "',[address]='" + txtAddress.Text + "',[telephone]='" + txtTelephoneNo.Text + "',[medium]='" + txtMedium.Text + "',[date_of_join]='" + dtpDateofJoin.Text + "',[updated_at] = '"+DateTime.Now+"' WHERE [id]='" + this.id + "'";
+                string sql = "UPDATE [teachers] SET [first_name]='" + txtFirstName.Text + "',[last_name]='" + txtLastName.Text + "',[full_name]='" + txtFullName.Text + "',[gender] = '" + Gender + "',[dob]='" + dtpDob.Text + "',[nic]='" + txtNicNo.Text + "',[email]='" + txtEmail.Text + "',[address]='" + txtAddress.Text + "',[telephone]='" + txtTelephoneNo.Text + "',[medium]='" + txtMedium.Text + "',[date_of_join]='" + dtpDateofJoin.Text + "',[updated_at] = '" + DateTime.Now + "' WHERE [id]='" + this.id + "'";
                 cnn = new SqlConnection(connetionString);
                 try
                 {
@@ -363,6 +365,11 @@ namespace LMS
         {
             txtSearch.Clear();
             cmbSearch.SelectedIndex = -1;
+        }
+
+        private void txtFullName_Enter(object sender, EventArgs e)
+        {
+            txtFullName.Text = txtFirstName.Text + " " + txtLastName.Text;
         }
     }
 }
