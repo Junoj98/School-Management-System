@@ -62,6 +62,31 @@ namespace LMS
                 MessageBox.Show("Can not open connection ! ");
             }
 
+            // ithu kku keela irukkira coding kku reason, gradeid  a kondu vara
+            string sql1 = "select * from grades";
+
+            try
+            {
+                cnn.Open();
+                command = new SqlCommand(sql1, cnn);
+                SqlDataReader sqlReader = command.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(sqlReader);
+                cmbGradeId.DataSource = dt;
+                cmbGradeId.SelectedIndex = 0;
+                cmbGradeId.DisplayMember = "id";
+                cmbGradeId.ValueMember = "id";
+                sqlReader.Close();
+                SetColumnHeaders();
+                command.Dispose();
+                cnn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not open connection ! ");
+            }
+
+
         }
 
         private void btnTestConnection_Click(object sender, EventArgs e)
@@ -229,7 +254,7 @@ namespace LMS
                 string admissionno = selectedRows.Cells["admission_no"].Value.ToString();
                 string nic = selectedRows.Cells["stu_nic_no"].Value.ToString();
                 string telephone = selectedRows.Cells["telephone_no"].Value.ToString();
-                string gradeid = selectedRows.Cells["grade_id"].Value.ToString();
+                object gradeid = selectedRows.Cells["grade_id"].Value;
                 string medium = selectedRows.Cells["medium"].Value.ToString();
                 string dateofadmission = selectedRows.Cells["date_of_admission"].Value.ToString();
                 string address = selectedRows.Cells["address"].Value.ToString();
@@ -252,7 +277,7 @@ namespace LMS
                 txtAdmissionNo.Text = admissionno;
                 txtNicNo.Text = nic;
                 txtTelephoneNo.Text = telephone;
-                cmbGradeId.Text = gradeid;
+                cmbGradeId.SelectedValue = gradeid;
                 txtMedium.Text = medium;
                 dtpDateofAdmission.Text = dateofadmission;
                 txtAddress.Text = address;
@@ -289,9 +314,9 @@ namespace LMS
 
         }
 
-         private void btnUpdate_Click(object sender, EventArgs e)
-         {
-            
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+
             if (btnUpdate.Text == "Save")
             {
                 string Gender = null;
@@ -308,7 +333,7 @@ namespace LMS
                 SqlConnection cnn = new SqlConnection(connetionString);
                 connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlCommand command;
-                string sql = "INSERT INTO [students] ([first_name],[last_name],[full_name],[gender],[date_of_birth],[admission_no],[stu_nic_no],[telephone_no],[address],[grade_id],[medium],[date_of_admission],[created_at])VALUES('" + txtFirstName.Text + "','" + txtLastName.Text + "','" + txtFullName.Text + "','" + Gender + "','" + dtpDob.Text + "','" + txtAdmissionNo.Text + "','" + txtNicNo.Text + "','" + txtTelephoneNo.Text + "','" + txtAddress.Text + "','" + cmbGradeId.Text + "','" + txtMedium.Text + "','" + dtpDateofAdmission.Text + "','" + DateTime.Now + "' )";
+                string sql = "INSERT INTO [students] ([first_name],[last_name],[full_name],[gender],[date_of_birth],[admission_no],[stu_nic_no],[telephone_no],[address],[grade_id],[medium],[date_of_admission],[created_at])VALUES('" + txtFirstName.Text + "','" + txtLastName.Text + "','" + txtFullName.Text + "','" + Gender + "','" + dtpDob.Text + "','" + txtAdmissionNo.Text + "','" + txtNicNo.Text + "','" + txtTelephoneNo.Text + "','" + txtAddress.Text + "','" + cmbGradeId.SelectedValue + "','" + txtMedium.Text + "','" + dtpDateofAdmission.Text + "','" + DateTime.Now + "' )";
                 cnn = new SqlConnection(connetionString);
                 try
                 {
@@ -338,7 +363,7 @@ namespace LMS
                 SqlConnection cnn = new SqlConnection(connetionString);
                 connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlCommand command;
-                string sql = "UPDATE [students] SET [first_name]='" + txtFirstName.Text + "',[last_name]='" + txtLastName.Text + "',[full_name]='" + txtFullName.Text + "',[gender] = '" + Gender + "',[date_of_birth]='" + dtpDob.Text + "',[admission_no]='" + txtAdmissionNo.Text + "',[stu_nic_no]='" + txtNicNo.Text + "',[telephone_no]='" + txtTelephoneNo.Text + "',[grade_id]='" + cmbGradeId.Text + "',[medium]='" + txtMedium.Text + "',[date_of_admission]='" + dtpDateofAdmission.Text + "',[address]='" + txtAddress.Text + "',[updated_at] = '" + DateTime.Now + "' WHERE [id]='" + this.id + "'";
+                string sql = "UPDATE [students] SET [first_name]='" + txtFirstName.Text + "',[last_name]='" + txtLastName.Text + "',[full_name]='" + txtFullName.Text + "',[gender] = '" + Gender + "',[date_of_birth]='" + dtpDob.Text + "',[admission_no]='" + txtAdmissionNo.Text + "',[stu_nic_no]='" + txtNicNo.Text + "',[telephone_no]='" + txtTelephoneNo.Text + "',[grade_id]='" + cmbGradeId.SelectedValue + "',[medium]='" + txtMedium.Text + "',[date_of_admission]='" + dtpDateofAdmission.Text + "',[address]='" + txtAddress.Text + "',[updated_at] = '" + DateTime.Now + "' WHERE [id]='" + this.id + "'";
                 cnn = new SqlConnection(connetionString);
                 try
                 {
@@ -406,6 +431,11 @@ namespace LMS
             StudentSubject studentSubject = new StudentSubject();
             studentSubject.Show();
             this.Hide();
+        }
+
+        private void txtFullName_Enter(object sender, EventArgs e)
+        {
+            txtFullName.Text = txtFirstName.Text + " " + txtLastName.Text;
         }
     }
 }

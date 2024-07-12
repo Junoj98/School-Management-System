@@ -69,7 +69,7 @@ namespace LMS
                 cnn.Open();
                 command = new SqlCommand(sql, cnn);
                 command.ExecuteNonQuery();
-                MessageBox.Show("Connection Open ! ");
+                MessageBox.Show("Teacher details added successfully ! ");
                 cnn.Close();
             }
             catch (Exception ex)
@@ -296,7 +296,7 @@ namespace LMS
                 SqlConnection cnn = new SqlConnection(connetionString);
                 connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlCommand command;
-                string sql = "INSERT INTO [teachers] ([first_name],[last_name],[full_name],[gender],[dob],[nic],[email],[address],[telephone],[medium],[date_of_join])VALUES('" + txtFirstName.Text + "','" + txtLastName.Text + "','" + txtFullName.Text + "','" + Gender + "','" + dtpDob.Text + "','" + txtNicNo.Text + "','" + txtEmail.Text + "','" + txtAddress.Text + "','" + txtTelephoneNo.Text + "','" + txtMedium.Text + "','" + dtpDateofJoin.Text + "')";
+                string sql = "INSERT INTO [teachers] ([first_name],[last_name],[full_name],[gender],[dob],[nic],[email],[address],[telephone],[medium],[date_of_join],[created_at],[updated_at])VALUES('" + txtFirstName.Text + "','" + txtLastName.Text + "','" + txtFullName.Text + "','" + Gender + "','" + dtpDob.Text + "','" + txtNicNo.Text + "','" + txtEmail.Text + "','" + txtAddress.Text + "','" + txtTelephoneNo.Text + "','" + txtMedium.Text + "','" + dtpDateofJoin.Text + "','"+DateTime.Now+"','"+DateTime.Now+"')";
                 cnn = new SqlConnection(connetionString);
                 try
                 {

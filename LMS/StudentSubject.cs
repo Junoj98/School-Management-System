@@ -49,6 +49,8 @@ namespace LMS
             {
                 MessageBox.Show("Can not open connection ! ");
             }
+
+            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -162,7 +164,7 @@ namespace LMS
                 SqlConnection cnn = new SqlConnection(connetionString);
                 connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlCommand command;
-                string sql = "INSERT INTO [student_subjects] ([subject_id],[admission_no],[created_at])VALUES('" + cmbSubjectId.Text + "','" + cmbAdmissionNo.Text + "','" + DateTime.Now + "' )";
+                string sql = "INSERT INTO [student_subjects] ([subject_id],[admission_no],[created_at])VALUES('" + cmbSubjectId.SelectedValue + "','" + cmbAdmissionNo.SelectedValue + "','" + DateTime.Now + "' )";
                 cnn = new SqlConnection(connetionString);
                 try
                 {
@@ -184,7 +186,7 @@ namespace LMS
                 SqlConnection cnn = new SqlConnection(connetionString);
                 connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlCommand command;
-                string sql = "UPDATE [student_subjects] SET [subject_id]='" + cmbSubjectId.Text + "',[admission_no]='" + cmbAdmissionNo.Text + "',[updated_at] = '" + DateTime.Now + "' WHERE [id]='" + this.id + "'";
+                string sql = "UPDATE [student_subjects] SET [subject_id]='" + cmbSubjectId.SelectedValue + "',[admission_no]='" + cmbAdmissionNo.SelectedValue + "',[updated_at] = '" + DateTime.Now + "' WHERE [id]='" + this.id + "'";
                 cnn = new SqlConnection(connetionString);
                 try
                 {
@@ -210,12 +212,12 @@ namespace LMS
                 DataGridViewRow selectedRows = dgvStudentSubject.SelectedRows[0];
 
                 this.id = selectedRows.Cells["id"].Value.ToString();
-                string subjectid = selectedRows.Cells["subject_id"].Value.ToString();
-                string gradeid = selectedRows.Cells["grade_id"].Value.ToString();
+                object subjectid = selectedRows.Cells["subject_id"].Value;
+                object admissionno = selectedRows.Cells["admission_no"].Value.ToString();
 
 
-                cmbSubjectId.Text = subjectid;
-                cmbAdmissionNo.Text = gradeid;
+                cmbSubjectId.SelectedValue = subjectid;
+                cmbAdmissionNo.SelectedValue = admissionno;
             }
         }
 
@@ -237,6 +239,50 @@ namespace LMS
                 dt.Load(sqlReader);
 
                 dgvStudentSubject.DataSource = dt;
+                sqlReader.Close();
+                command.Dispose();
+                cnn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not open connection ! ");
+            }
+
+            string sql1 = "select * from subjects";
+
+            try
+            {
+                cnn.Open();
+                command = new SqlCommand(sql1, cnn);
+                SqlDataReader sqlReader = command.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(sqlReader);
+                dgvStudentSubject.DataSource = dt;
+                cmbSubjectId.SelectedIndex = 0;
+                cmbSubjectId.DisplayMember = "id";
+                cmbSubjectId.ValueMember = "id";
+                sqlReader.Close();
+                command.Dispose();
+                cnn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not open connection ! ");
+            }
+
+            string sql2 = "select * from students";
+
+            try
+            {
+                cnn.Open();
+                command = new SqlCommand(sql2, cnn);
+                SqlDataReader sqlReader = command.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(sqlReader);
+                dgvStudentSubject.DataSource = dt;
+                cmbAdmissionNo.SelectedIndex = 0;
+                cmbAdmissionNo.DisplayMember = "admission_no";
+                cmbAdmissionNo.ValueMember = "id";
                 sqlReader.Close();
                 command.Dispose();
                 cnn.Close();

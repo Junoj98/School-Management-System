@@ -68,6 +68,7 @@ namespace LMS
             {
                 MessageBox.Show("Can not open connection ! ");
             }
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
