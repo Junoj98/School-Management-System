@@ -330,6 +330,7 @@
             ClientSize = new Size(1343, 624);
             Controls.Add(gradientPanel1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Subject";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Subject";
