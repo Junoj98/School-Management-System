@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             gradientPanel1 = new GradientPanel();
-            lblUserName = new Label();
             label3 = new Label();
             btnLogout = new Button();
             btnStudentSubject = new Button();
@@ -49,7 +48,6 @@
             // 
             gradientPanel1.ColorBottom = Color.FromArgb(4, 87, 122);
             gradientPanel1.ColorTop = Color.Teal;
-            gradientPanel1.Controls.Add(lblUserName);
             gradientPanel1.Controls.Add(label3);
             gradientPanel1.Controls.Add(btnLogout);
             gradientPanel1.Controls.Add(btnStudentSubject);
@@ -66,18 +64,6 @@
             gradientPanel1.Name = "gradientPanel1";
             gradientPanel1.Size = new Size(827, 489);
             gradientPanel1.TabIndex = 0;
-            // 
-            // lblUserName
-            // 
-            lblUserName.AutoSize = true;
-            lblUserName.BackColor = Color.DimGray;
-            lblUserName.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblUserName.ForeColor = SystemColors.ControlLightLight;
-            lblUserName.Location = new Point(376, 115);
-            lblUserName.Name = "lblUserName";
-            lblUserName.Size = new Size(60, 23);
-            lblUserName.TabIndex = 7;
-            lblUserName.Text = "label2";
             // 
             // label3
             // 
@@ -222,6 +208,5 @@
         private Button btnStudentSubject;
         private Button btnLogout;
         private Label label3;
-        private Label lblUserName;
     }
 }

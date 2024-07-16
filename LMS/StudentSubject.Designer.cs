@@ -45,6 +45,7 @@
             txtAdmisionNo = new Label();
             btnUpdate = new Button();
             lblFirstName = new Label();
+            groupBox1 = new GroupBox();
             gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStudentSubject).BeginInit();
             SuspendLayout();
@@ -68,6 +69,7 @@
             gradientPanel1.Controls.Add(txtAdmisionNo);
             gradientPanel1.Controls.Add(btnUpdate);
             gradientPanel1.Controls.Add(lblFirstName);
+            gradientPanel1.Controls.Add(groupBox1);
             gradientPanel1.Dock = DockStyle.Fill;
             gradientPanel1.Location = new Point(0, 0);
             gradientPanel1.Name = "gradientPanel1";
@@ -196,7 +198,7 @@
             // 
             cmbAdmissionNo.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbAdmissionNo.FormattingEnabled = true;
-            cmbAdmissionNo.Location = new Point(724, 258);
+            cmbAdmissionNo.Location = new Point(724, 321);
             cmbAdmissionNo.Name = "cmbAdmissionNo";
             cmbAdmissionNo.Size = new Size(179, 28);
             cmbAdmissionNo.TabIndex = 121;
@@ -205,7 +207,7 @@
             // 
             cmbSubjectId.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbSubjectId.FormattingEnabled = true;
-            cmbSubjectId.Location = new Point(724, 204);
+            cmbSubjectId.Location = new Point(724, 267);
             cmbSubjectId.Name = "cmbSubjectId";
             cmbSubjectId.Size = new Size(179, 28);
             cmbSubjectId.TabIndex = 122;
@@ -214,18 +216,18 @@
             // 
             txtAdmisionNo.AutoSize = true;
             txtAdmisionNo.BackColor = Color.Transparent;
-            txtAdmisionNo.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            txtAdmisionNo.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtAdmisionNo.ForeColor = SystemColors.ControlLightLight;
-            txtAdmisionNo.Location = new Point(590, 259);
+            txtAdmisionNo.Location = new Point(590, 322);
             txtAdmisionNo.Name = "txtAdmisionNo";
-            txtAdmisionNo.Size = new Size(129, 23);
+            txtAdmisionNo.Size = new Size(116, 20);
             txtAdmisionNo.TabIndex = 118;
             txtAdmisionNo.Text = "Admission No.";
             // 
             // btnUpdate
             // 
             btnUpdate.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold);
-            btnUpdate.Location = new Point(726, 306);
+            btnUpdate.Location = new Point(726, 369);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(107, 39);
             btnUpdate.TabIndex = 120;
@@ -237,13 +239,25 @@
             // 
             lblFirstName.AutoSize = true;
             lblFirstName.BackColor = Color.Transparent;
-            lblFirstName.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            lblFirstName.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblFirstName.ForeColor = SystemColors.ControlLightLight;
-            lblFirstName.Location = new Point(590, 205);
+            lblFirstName.Location = new Point(590, 268);
             lblFirstName.Name = "lblFirstName";
-            lblFirstName.Size = new Size(96, 23);
+            lblFirstName.Size = new Size(83, 20);
             lblFirstName.TabIndex = 119;
             lblFirstName.Text = "Subject Id";
+            // 
+            // groupBox1
+            // 
+            groupBox1.BackColor = Color.Transparent;
+            groupBox1.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            groupBox1.ForeColor = SystemColors.ControlLightLight;
+            groupBox1.Location = new Point(571, 219);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(372, 222);
+            groupBox1.TabIndex = 135;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Student Subject";
             // 
             // StudentSubject
             // 
@@ -280,5 +294,6 @@
         private Button btnUpdate;
         private Label lblFirstName;
         private Label label1;
+        private GroupBox groupBox1;
     }
 }

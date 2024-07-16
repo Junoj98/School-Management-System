@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LMS
@@ -21,66 +16,64 @@ namespace LMS
 
         private void btnGetData_Click(object sender, EventArgs e)
         {
-            string connetionString = null;
-            connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
-            SqlConnection cnn = new SqlConnection(connetionString);
-            SqlCommand command;
+            string connectionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
             string sql = "select * from grade_subjects";
 
             try
             {
-                cnn.Open();
-                command = new SqlCommand(sql, cnn);
-                SqlDataReader sqlReader = command.ExecuteReader();
-                // while (sqlReader.Read())
-                //{
-                //  MessageBox.Show(sqlReader.GetValue(0)+"-"+ sqlReader.GetValue(1) + "-" + sqlReader.GetValue(2) + "-" + sqlReader.GetValue(3) + "-" + sqlReader.GetValue(4) + "-" + sqlReader.GetValue(5));
-                // }
-                DataTable dt = new DataTable();
-
-                dt.Load(sqlReader);
-
-                dgvGradeSubject.DataSource = dt;
-                sqlReader.Close();
-                command.Dispose();
-                cnn.Close();
+                using (SqlConnection cnn = new SqlConnection(connectionString))
+                {
+                    cnn.Open();
+                    using (SqlCommand command = new SqlCommand(sql, cnn))
+                    {
+                        SqlDataReader sqlReader = command.ExecuteReader();
+                        DataTable dt = new DataTable();
+                        dt.Load(sqlReader);
+                        dgvGradeSubject.DataSource = dt;
+                    }
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Can not open connection ! ");
+                MessageBox.Show("Cannot open connection! " + ex.Message);
             }
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            string id = dgvGradeSubject.SelectedRows[0].Cells["id"].Value.ToString();
-            DialogResult dr = MessageBox.Show("Do you want to Delete?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dr == DialogResult.No)
+            if (dgvGradeSubject.SelectedRows.Count > 0)
             {
-                return;
+                string id = dgvGradeSubject.SelectedRows[0].Cells["id"].Value.ToString();
+                DialogResult dr = MessageBox.Show("Do you want to Delete?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.No)
+                {
+                    return;
+                }
+
+                string connectionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
+                string sql = "DELETE FROM grade_subjects WHERE id = @id";
+
+                try
+                {
+                    using (SqlConnection cnn = new SqlConnection(connectionString))
+                    {
+                        cnn.Open();
+                        using (SqlCommand command = new SqlCommand(sql, cnn))
+                        {
+                            command.Parameters.AddWithValue("@id", id);
+                            command.ExecuteNonQuery();
+                            MessageBox.Show("Successfully deleted");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Cannot open connection! " + ex.Message);
+                }
             }
-            string connetionString = null;
-            SqlConnection cnn = new SqlConnection(connetionString);
-            connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
-            SqlCommand command;
-            string sql = "DELETE FROM grade_subjects WHERE id ='" + id + "'";
-            cnn = new SqlConnection(connetionString);
-            try
+            else
             {
-                cnn.Open();
-                command = new SqlCommand(sql, cnn);
-                command.ExecuteNonQuery();
-                MessageBox.Show(" Successfully deleted ");
-                cnn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Can not open connection ! ");
+                MessageBox.Show("Please select a row to delete.");
             }
         }
 
@@ -95,9 +88,8 @@ namespace LMS
         {
             this.id = null;
             cmbSubjectId.Text = null;
-            cmbSubjectId.Text = null;
+            cmbGradeId.Text = null;
             btnUpdate.Text = "Save";
-
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -107,31 +99,28 @@ namespace LMS
                 MessageBox.Show("Please select the column");
                 return;
             }
-            string connetionString = null;
-            connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
-            SqlConnection cnn = new SqlConnection(connetionString);
-            SqlCommand command;
-            string sql = "select * from grade_subjects where " + cmbSearch.SelectedItem.ToString() + " like '%" + txtSearch.Text + "%'";
+
+            string connectionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
+            string sql = "select * from grade_subjects where " + cmbSearch.SelectedItem.ToString() + " like @searchText";
 
             try
             {
-                cnn.Open();
-                command = new SqlCommand(sql, cnn);
-                SqlDataReader sqlReader = command.ExecuteReader();
-                // while (sqlReader.Read())
-                //{
-                //  MessageBox.Show(sqlReader.GetValue(0)+"-"+ sqlReader.GetValue(1) + "-" + sqlReader.GetValue(2) + "-" + sqlReader.GetValue(3) + "-" + sqlReader.GetValue(4) + "-" + sqlReader.GetValue(5));
-                // }
-                DataTable dt = new DataTable();
-                dt.Load(sqlReader);
-                dgvGradeSubject.DataSource = dt;
-                sqlReader.Close();
-                command.Dispose();
-                cnn.Close();
+                using (SqlConnection cnn = new SqlConnection(connectionString))
+                {
+                    cnn.Open();
+                    using (SqlCommand command = new SqlCommand(sql, cnn))
+                    {
+                        command.Parameters.AddWithValue("@searchText", "%" + txtSearch.Text + "%");
+                        SqlDataReader sqlReader = command.ExecuteReader();
+                        DataTable dt = new DataTable();
+                        dt.Load(sqlReader);
+                        dgvGradeSubject.DataSource = dt;
+                    }
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Can not open connection ! ");
+                MessageBox.Show("Cannot open connection! " + ex.Message);
             }
         }
 
@@ -161,50 +150,32 @@ namespace LMS
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (btnUpdate.Text == "Save")
-            {
+            string connectionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
+            string sql = btnUpdate.Text == "Save" ?
+                "INSERT INTO grade_subjects (subject_id, grade_id) VALUES (@subjectId, @gradeId)" :
+                "UPDATE grade_subjects SET subject_id = @subjectId, grade_id = @gradeId WHERE id = @id";
 
-                string connetionString = null;
-                SqlConnection cnn = new SqlConnection(connetionString);
-                connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
-                SqlCommand command;
-                string sql = "INSERT INTO [grade_subjects] ([subject_id],[grade_id])VALUES('" + cmbSubjectId.SelectedValue + "','" + cmbGradeId.SelectedValue + "' )";
-                cnn = new SqlConnection(connetionString);
-                try
+            try
+            {
+                using (SqlConnection cnn = new SqlConnection(connectionString))
                 {
                     cnn.Open();
-                    command = new SqlCommand(sql, cnn);
-                    command.ExecuteNonQuery();
-                    MessageBox.Show("Successfully added ");
-                    cnn.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Can not open connection ! ");
+                    using (SqlCommand command = new SqlCommand(sql, cnn))
+                    {
+                        command.Parameters.AddWithValue("@subjectId", cmbSubjectId.SelectedValue);
+                        command.Parameters.AddWithValue("@gradeId", cmbGradeId.SelectedValue);
+                        if (btnUpdate.Text != "Save")
+                        {
+                            command.Parameters.AddWithValue("@id", this.id);
+                        }
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Successfully " + (btnUpdate.Text == "Save" ? "added" : "updated"));
+                    }
                 }
             }
-            else
+            catch (Exception ex)
             {
-
-                string connetionString = null;
-                SqlConnection cnn = new SqlConnection(connetionString);
-                connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
-                SqlCommand command;
-                string sql = "UPDATE [grade_subjects] SET [subject_id]='" + cmbSubjectId.SelectedValue + "',[grade_id]='" + cmbGradeId.SelectedValue + "' WHERE [id]='" + this.id + "'";
-                cnn = new SqlConnection(connetionString);
-                try
-                {
-                    cnn.Open();
-                    command = new SqlCommand(sql, cnn);
-                    command.ExecuteNonQuery();
-                    MessageBox.Show("Successfully updated");
-                    cnn.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Can not open connection ! ");
-                }
-
+                MessageBox.Show("Cannot open connection! " + ex.Message);
             }
         }
 
@@ -213,87 +184,65 @@ namespace LMS
             if (dgvGradeSubject.SelectedRows.Count > 0)
             {
                 btnUpdate.Text = "Update";
-                DataGridViewRow selectedRows = dgvGradeSubject.SelectedRows[0];
+                DataGridViewRow selectedRow = dgvGradeSubject.SelectedRows[0];
 
-                this.id = selectedRows.Cells["id"].Value.ToString();
-                object subjectid = selectedRows.Cells["subject_id"].Value;
-                object gradeid = selectedRows.Cells["grade_id"].Value;
+                this.id = selectedRow.Cells["id"].Value.ToString();
+                object subjectId = selectedRow.Cells["subject_id"].Value;
+                object gradeId = selectedRow.Cells["grade_id"].Value;
 
-
-                cmbSubjectId.SelectedValue = subjectid;
-                cmbGradeId.SelectedValue = gradeid;
+                cmbSubjectId.SelectedValue = subjectId;
+                cmbGradeId.SelectedValue = gradeId;
             }
         }
 
         private void GradeSubject_Load(object sender, EventArgs e)
         {
-            string connetionString = null;
-            connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
-            SqlConnection cnn = new SqlConnection(connetionString);
-            SqlCommand command;
-            string sql = "select * from grade_subjects";
+            string connectionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
 
             try
             {
-                cnn.Open();
-                command = new SqlCommand(sql, cnn);
-                SqlDataReader sqlReader = command.ExecuteReader();
-                DataTable dt = new DataTable();
+                using (SqlConnection cnn = new SqlConnection(connectionString))
+                {
+                    cnn.Open();
 
-                dt.Load(sqlReader);
+                    // Load grade_subjects
+                    string sqlGradeSubjects = "select * from grade_subjects";
+                    using (SqlCommand command = new SqlCommand(sqlGradeSubjects, cnn))
+                    {
+                        SqlDataReader sqlReader = command.ExecuteReader();
+                        DataTable dt = new DataTable();
+                        dt.Load(sqlReader);
+                        dgvGradeSubject.DataSource = dt;
+                    }
 
-                dgvGradeSubject.DataSource = dt;
-                sqlReader.Close();
-                command.Dispose();
-                cnn.Close();
+                    // Load grades into cmbGradeId
+                    string sqlGrades = "select * from grades";
+                    using (SqlCommand command = new SqlCommand(sqlGrades, cnn))
+                    {
+                        SqlDataReader sqlReader = command.ExecuteReader();
+                        DataTable dt = new DataTable();
+                        dt.Load(sqlReader);
+                        cmbGradeId.DataSource = dt;
+                        cmbGradeId.DisplayMember = "id";
+                        cmbGradeId.ValueMember = "id";
+                    }
+
+                    // Load subjects into cmbSubjectId
+                    string sqlSubjects = "select * from subjects";
+                    using (SqlCommand command = new SqlCommand(sqlSubjects, cnn))
+                    {
+                        SqlDataReader sqlReader = command.ExecuteReader();
+                        DataTable dt = new DataTable();
+                        dt.Load(sqlReader);
+                        cmbSubjectId.DataSource = dt;
+                        cmbSubjectId.DisplayMember = "id";
+                        cmbSubjectId.ValueMember = "id";
+                    }
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Can not open connection ! ");
-            }
-
-            string sql1 = "select * from grades";
-
-            try
-            {
-                cnn.Open();
-                command = new SqlCommand(sql1, cnn);
-                SqlDataReader sqlReader = command.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(sqlReader);
-                dgvGradeSubject.DataSource = dt;
-                cmbGradeId.SelectedIndex = 0;
-                cmbGradeId.DisplayMember = "id";
-                cmbGradeId.ValueMember = "id";
-                sqlReader.Close();
-                command.Dispose();
-                cnn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Can not open connection ! ");
-            }
-
-            string sql2 = "select * from subjects";
-
-            try
-            {
-                cnn.Open();
-                command = new SqlCommand(sql2, cnn);
-                SqlDataReader sqlReader = command.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(sqlReader);
-                dgvGradeSubject.DataSource = dt;
-                cmbSubjectId.SelectedIndex = 0;
-                cmbSubjectId.DisplayMember = "id";
-                cmbSubjectId.ValueMember = "id";
-                sqlReader.Close();
-                command.Dispose();
-                cnn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Can not open connection ! ");
+                MessageBox.Show("Cannot open connection! " + ex.Message);
             }
         }
     }

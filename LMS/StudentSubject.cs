@@ -157,50 +157,74 @@ namespace LMS
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            string connectionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
+
             if (btnUpdate.Text == "Save")
             {
-
-                string connetionString = null;
-                SqlConnection cnn = new SqlConnection(connetionString);
-                connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
-                SqlCommand command;
-                string sql = "INSERT INTO [student_subjects] ([subject_id],[stu_admission_no])VALUES('" + cmbSubjectId.SelectedValue + "','" + cmbAdmissionNo.SelectedValue + "' )";
-                cnn = new SqlConnection(connetionString);
-                try
+                if (cmbSubjectId.SelectedValue == null || cmbAdmissionNo.SelectedValue == null)
                 {
-                    cnn.Open();
-                    command = new SqlCommand(sql, cnn);
-                    command.ExecuteNonQuery();
-                    MessageBox.Show("Successfully added ");
-                    cnn.Close();
+                    MessageBox.Show("Please select valid subject and student.");
+                    return;
                 }
-                catch (Exception ex)
+
+                string sql = "INSERT INTO student_subjects (subject_id, stu_admission_no) VALUES (@subject_id, @stu_admission_no)";
+
+                using (SqlConnection cnn = new SqlConnection(connectionString))
                 {
-                    MessageBox.Show("Can not open connection ! ");
+                    try
+                    {
+                        cnn.Open();
+                        using (SqlCommand command = new SqlCommand(sql, cnn))
+                        {
+                            command.Parameters.AddWithValue("@subject_id", cmbSubjectId.SelectedValue);
+                            command.Parameters.AddWithValue("@stu_admission_no", cmbAdmissionNo.SelectedValue);
+                            command.ExecuteNonQuery();
+                            MessageBox.Show("Successfully added.");
+                        }
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("SQL Error: " + ex.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
                 }
             }
             else
             {
-
-                string connetionString = null;
-                SqlConnection cnn = new SqlConnection(connetionString);
-                connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
-                SqlCommand command;
-                string sql = "UPDATE [student_subjects] SET [subject_id]='" + cmbSubjectId.SelectedValue + "',[stu_admission_no]='" + cmbAdmissionNo.SelectedValue + "' WHERE [id]='" + this.id + "'";
-                cnn = new SqlConnection(connetionString);
-                try
+                if (cmbSubjectId.SelectedValue == null || cmbAdmissionNo.SelectedValue == null || string.IsNullOrEmpty(this.id))
                 {
-                    cnn.Open();
-                    command = new SqlCommand(sql, cnn);
-                    command.ExecuteNonQuery();
-                    MessageBox.Show("Successfully updated");
-                    cnn.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Can not open connection ! ");
+                    MessageBox.Show("Please select a valid subject, student, and record.");
+                    return;
                 }
 
+                string sql = "UPDATE student_subjects SET subject_id = @subject_id, stu_admission_no = @stu_admission_no WHERE id = @id";
+
+                using (SqlConnection cnn = new SqlConnection(connectionString))
+                {
+                    try
+                    {
+                        cnn.Open();
+                        using (SqlCommand command = new SqlCommand(sql, cnn))
+                        {
+                            command.Parameters.AddWithValue("@subject_id", cmbSubjectId.SelectedValue);
+                            command.Parameters.AddWithValue("@stu_admission_no", cmbAdmissionNo.SelectedValue);
+                            command.Parameters.AddWithValue("@id", this.id);
+                            command.ExecuteNonQuery();
+                            MessageBox.Show("Successfully updated.");
+                        }
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("SQL Error: " + ex.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
             }
         }
 

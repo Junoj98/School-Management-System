@@ -45,6 +45,7 @@
             label1 = new Label();
             btnUpdate = new Button();
             lblFirstName = new Label();
+            groupBox1 = new GroupBox();
             gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvGradeSubject).BeginInit();
             SuspendLayout();
@@ -68,6 +69,7 @@
             gradientPanel1.Controls.Add(label1);
             gradientPanel1.Controls.Add(btnUpdate);
             gradientPanel1.Controls.Add(lblFirstName);
+            gradientPanel1.Controls.Add(groupBox1);
             gradientPanel1.Dock = DockStyle.Fill;
             gradientPanel1.Location = new Point(0, 0);
             gradientPanel1.Name = "gradientPanel1";
@@ -196,7 +198,7 @@
             // 
             cmbGradeId.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbGradeId.FormattingEnabled = true;
-            cmbGradeId.Location = new Point(730, 270);
+            cmbGradeId.Location = new Point(730, 291);
             cmbGradeId.Name = "cmbGradeId";
             cmbGradeId.Size = new Size(179, 28);
             cmbGradeId.TabIndex = 103;
@@ -205,7 +207,7 @@
             // 
             cmbSubjectId.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbSubjectId.FormattingEnabled = true;
-            cmbSubjectId.Location = new Point(730, 216);
+            cmbSubjectId.Location = new Point(730, 237);
             cmbSubjectId.Name = "cmbSubjectId";
             cmbSubjectId.Size = new Size(179, 28);
             cmbSubjectId.TabIndex = 103;
@@ -225,7 +227,7 @@
             // btnUpdate
             // 
             btnUpdate.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold);
-            btnUpdate.Location = new Point(732, 318);
+            btnUpdate.Location = new Point(732, 339);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(107, 39);
             btnUpdate.TabIndex = 102;
@@ -239,11 +241,23 @@
             lblFirstName.BackColor = Color.Transparent;
             lblFirstName.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
             lblFirstName.ForeColor = SystemColors.ControlLightLight;
-            lblFirstName.Location = new Point(616, 217);
+            lblFirstName.Location = new Point(616, 238);
             lblFirstName.Name = "lblFirstName";
             lblFirstName.Size = new Size(96, 23);
             lblFirstName.TabIndex = 9;
             lblFirstName.Text = "Subject Id";
+            // 
+            // groupBox1
+            // 
+            groupBox1.BackColor = Color.Transparent;
+            groupBox1.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            groupBox1.ForeColor = SystemColors.ControlLightLight;
+            groupBox1.Location = new Point(601, 194);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(335, 222);
+            groupBox1.TabIndex = 134;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Grade Subject";
             // 
             // GradeSubject
             // 
@@ -280,5 +294,6 @@
         private Button btnGetData;
         private Button btnHome;
         private Label label2;
+        private GroupBox groupBox1;
     }
 }
