@@ -21,12 +21,10 @@ namespace LMS
 
         private void btnDataInsert_Click(object sender, EventArgs e)
         {
-            string connetionString = null;
+            string connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
             SqlConnection cnn = new SqlConnection(connetionString);
-            connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
             SqlCommand command;
             string sql = "INSERT INTO [subjects] ([subject_name],[subject_index],[subject_order],[subject_number])VALUES('Mathematics','MA1223','MA1245','MA123')";
-            cnn = new SqlConnection(connetionString);
             try
             {
                 cnn.Open();
@@ -43,8 +41,7 @@ namespace LMS
 
         private void btnGetData_Click(object sender, EventArgs e)
         {
-            string connetionString = null;
-            connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
+            string connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
             SqlConnection cnn = new SqlConnection(connetionString);
             SqlCommand command;
             string sql = "select * from subjects";
@@ -84,18 +81,16 @@ namespace LMS
             {
                 return;
             }
-            string connetionString = null;
+            string connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
             SqlConnection cnn = new SqlConnection(connetionString);
-            connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
             SqlCommand command;
             string sql = "DELETE FROM subjects WHERE id ='" + id + "'";
-            cnn = new SqlConnection(connetionString);
             try
             {
                 cnn.Open();
                 command = new SqlCommand(sql, cnn);
                 command.ExecuteNonQuery();
-                MessageBox.Show("Student details successfully deleted ");
+                MessageBox.Show("Subject details successfully deleted ");
                 cnn.Close();
             }
             catch (Exception ex)
@@ -118,8 +113,7 @@ namespace LMS
                 MessageBox.Show("Please select the column");
                 return;
             }
-            string connetionString = null;
-            connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
+            string connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
             SqlConnection cnn = new SqlConnection(connetionString);
             SqlCommand command;
             string sql = "select * from subjects where " + cmbSearch.SelectedItem.ToString() + " like '%" + txtSearch.Text + "%'";
@@ -129,14 +123,11 @@ namespace LMS
                 cnn.Open();
                 command = new SqlCommand(sql, cnn);
                 SqlDataReader sqlReader = command.ExecuteReader();
-                // while (sqlReader.Read())
-                //{
-                //  MessageBox.Show(sqlReader.GetValue(0)+"-"+ sqlReader.GetValue(1) + "-" + sqlReader.GetValue(2) + "-" + sqlReader.GetValue(3) + "-" + sqlReader.GetValue(4) + "-" + sqlReader.GetValue(5));
-                // }
                 DataTable dt = new DataTable();
                 dt.Load(sqlReader);
                 dgvSubject.DataSource = dt;
                 sqlReader.Close();
+                SetColumnHeaders();
                 command.Dispose();
                 cnn.Close();
             }
@@ -197,7 +188,9 @@ namespace LMS
             dgvSubject.Columns["subject_name"].HeaderText = "Subject Name";
             dgvSubject.Columns["subject_index"].HeaderText = "Subject Index";
             dgvSubject.Columns["subject_order"].HeaderText = "Subject Order";
-            dgvSubject.Columns["subject_number"].HeaderText = "Subject Number ";
+            dgvSubject.Columns["subject_number"].HeaderText = "Subject Number";
+            dgvSubject.Columns["created_at"].HeaderText = "Created At";
+            dgvSubject.Columns["updated_at"].HeaderText = "Updated At";
 
 
             foreach (DataGridViewColumn column in dgvSubject.Columns)
@@ -205,6 +198,7 @@ namespace LMS
                 column.HeaderCell.Style.Font = new Font("Times New Roman", 10, FontStyle.Bold);
             }
         }
+
         private void btnEdit_Click(object sender, EventArgs e)
         {
 
@@ -220,13 +214,10 @@ namespace LMS
 
             if (btnUpdate.Text == "Save")
             {
-
-                string connetionString = null;
+                string connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlConnection cnn = new SqlConnection(connetionString);
-                connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlCommand command;
                 string sql = "INSERT INTO [subjects] ([subject_name],[subject_index],[subject_order],[subject_number],[created_at])VALUES('" + txtSubjectName.Text + "','" + txtSubjectIndex.Text + "','" + txtSubjectOrder.Text + "','" + txtSubjectNumber.Text + "','" + DateTime.Now + "' )";
-                cnn = new SqlConnection(connetionString);
                 try
                 {
                     cnn.Open();
@@ -242,13 +233,10 @@ namespace LMS
             }
             else
             {
-
-                string connetionString = null;
+                string connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlConnection cnn = new SqlConnection(connetionString);
-                connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlCommand command;
                 string sql = "UPDATE [subjects] SET [subject_name]='" + txtSubjectName.Text + "',[subject_index]='" + txtSubjectIndex.Text + "',[subject_order]='" + txtSubjectOrder.Text + "',[subject_number]='" + txtSubjectNumber.Text + "',[updated_at] = '" + DateTime.Now + "' WHERE [id]='" + this.id + "'";
-                cnn = new SqlConnection(connetionString);
                 try
                 {
                     cnn.Open();
@@ -276,8 +264,7 @@ namespace LMS
 
         private void Subject_Load(object sender, EventArgs e)
         {
-            string connetionString = null;
-            connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
+            string connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
             SqlConnection cnn = new SqlConnection(connetionString);
             SqlCommand command;
             string sql = "select * from subjects";
@@ -293,6 +280,7 @@ namespace LMS
 
                 dgvSubject.DataSource = dt;
                 sqlReader.Close();
+                SetColumnHeaders();
                 command.Dispose();
                 cnn.Close();
             }
