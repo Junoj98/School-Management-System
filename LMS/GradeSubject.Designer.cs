@@ -123,6 +123,7 @@
             btnNew.TabIndex = 116;
             btnNew.UseVisualStyleBackColor = true;
             btnNew.Click += btnNew_Click;
+            btnNew.KeyDown += btnNew_KeyDown;
             // 
             // label9
             // 

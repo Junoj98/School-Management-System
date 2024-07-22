@@ -266,5 +266,13 @@ namespace LMS
                 MessageBox.Show("Can not open connection ! ");
             }
         }
+
+        private void btnNew_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control == true && e.KeyCode == Keys.N)
+            {
+                btnNew.PerformClick();
+            }
+        }
     }
 }

@@ -21,9 +21,8 @@ namespace LMS
 
         private void btnGetData_Click(object sender, EventArgs e)
         {
-            string connetionString = null;
-            connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
-            SqlConnection cnn = new SqlConnection(connetionString);
+            string connectionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
+            SqlConnection cnn = new SqlConnection(connectionString);
             SqlCommand command;
             string sql = "select * from student_subjects";
 
@@ -32,14 +31,8 @@ namespace LMS
                 cnn.Open();
                 command = new SqlCommand(sql, cnn);
                 SqlDataReader sqlReader = command.ExecuteReader();
-                // while (sqlReader.Read())
-                //{
-                //  MessageBox.Show(sqlReader.GetValue(0)+"-"+ sqlReader.GetValue(1) + "-" + sqlReader.GetValue(2) + "-" + sqlReader.GetValue(3) + "-" + sqlReader.GetValue(4) + "-" + sqlReader.GetValue(5));
-                // }
                 DataTable dt = new DataTable();
-
                 dt.Load(sqlReader);
-
                 dgvStudentSubject.DataSource = dt;
                 sqlReader.Close();
                 command.Dispose();
@@ -47,37 +40,41 @@ namespace LMS
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Can not open connection ! ");
+                MessageBox.Show("Can not open connection: " + ex.Message);
             }
-
-            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (dgvStudentSubject.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a record to delete.");
+                return;
+            }
+
             string id = dgvStudentSubject.SelectedRows[0].Cells["id"].Value.ToString();
             DialogResult dr = MessageBox.Show("Do you want to Delete?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.No)
             {
                 return;
             }
-            string connetionString = null;
-            SqlConnection cnn = new SqlConnection(connetionString);
-            connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
+
+            string connectionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
+            SqlConnection cnn = new SqlConnection(connectionString);
             SqlCommand command;
             string sql = "DELETE FROM student_subjects WHERE id ='" + id + "'";
-            cnn = new SqlConnection(connetionString);
+
             try
             {
                 cnn.Open();
                 command = new SqlCommand(sql, cnn);
                 command.ExecuteNonQuery();
-                MessageBox.Show(" Successfully deleted ");
+                MessageBox.Show("Successfully deleted.");
                 cnn.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Can not open connection ! ");
+                MessageBox.Show("Can not open connection: " + ex.Message);
             }
         }
 
@@ -100,12 +97,12 @@ namespace LMS
         {
             if (cmbSearch.SelectedIndex == -1)
             {
-                MessageBox.Show("Please select the column");
+                MessageBox.Show("Please select the column.");
                 return;
             }
-            string connetionString = null;
-            connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
-            SqlConnection cnn = new SqlConnection(connetionString);
+
+            string connectionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
+            SqlConnection cnn = new SqlConnection(connectionString);
             SqlCommand command;
             string sql = "select * from grade_subjects where " + cmbSearch.SelectedItem.ToString() + " like '%" + txtSearch.Text + "%'";
 
@@ -114,10 +111,6 @@ namespace LMS
                 cnn.Open();
                 command = new SqlCommand(sql, cnn);
                 SqlDataReader sqlReader = command.ExecuteReader();
-                // while (sqlReader.Read())
-                //{
-                //  MessageBox.Show(sqlReader.GetValue(0)+"-"+ sqlReader.GetValue(1) + "-" + sqlReader.GetValue(2) + "-" + sqlReader.GetValue(3) + "-" + sqlReader.GetValue(4) + "-" + sqlReader.GetValue(5));
-                // }
                 DataTable dt = new DataTable();
                 dt.Load(sqlReader);
                 dgvStudentSubject.DataSource = dt;
@@ -127,7 +120,7 @@ namespace LMS
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Can not open connection ! ");
+                MessageBox.Show("Can not open connection: " + ex.Message);
             }
         }
 
@@ -167,7 +160,7 @@ namespace LMS
                     return;
                 }
 
-                string sql = "INSERT INTO student_subjects (subject_id, stu_admission_no) VALUES (@subject_id, @stu_admission_no)";
+                string sql = "INSERT INTO student_subjects (subject_id, stu_admission_no) VALUES ('" + cmbSubjectId.SelectedValue + "', '" + cmbAdmissionNo.SelectedValue + "')";
 
                 using (SqlConnection cnn = new SqlConnection(connectionString))
                 {
@@ -176,8 +169,6 @@ namespace LMS
                         cnn.Open();
                         using (SqlCommand command = new SqlCommand(sql, cnn))
                         {
-                            command.Parameters.AddWithValue("@subject_id", cmbSubjectId.SelectedValue);
-                            command.Parameters.AddWithValue("@stu_admission_no", cmbAdmissionNo.SelectedValue);
                             command.ExecuteNonQuery();
                             MessageBox.Show("Successfully added.");
                         }
@@ -200,7 +191,7 @@ namespace LMS
                     return;
                 }
 
-                string sql = "UPDATE student_subjects SET subject_id = @subject_id, stu_admission_no = @stu_admission_no WHERE id = @id";
+                string sql = "UPDATE student_subjects SET subject_id = '" + cmbSubjectId.SelectedValue + "', stu_admission_no = '" + cmbAdmissionNo.SelectedValue + "' WHERE id = '" + this.id + "'";
 
                 using (SqlConnection cnn = new SqlConnection(connectionString))
                 {
@@ -209,9 +200,6 @@ namespace LMS
                         cnn.Open();
                         using (SqlCommand command = new SqlCommand(sql, cnn))
                         {
-                            command.Parameters.AddWithValue("@subject_id", cmbSubjectId.SelectedValue);
-                            command.Parameters.AddWithValue("@stu_admission_no", cmbAdmissionNo.SelectedValue);
-                            command.Parameters.AddWithValue("@id", this.id);
                             command.ExecuteNonQuery();
                             MessageBox.Show("Successfully updated.");
                         }
@@ -233,15 +221,14 @@ namespace LMS
             if (dgvStudentSubject.SelectedRows.Count > 0)
             {
                 btnUpdate.Text = "Update";
-                DataGridViewRow selectedRows = dgvStudentSubject.SelectedRows[0];
+                DataGridViewRow selectedRow = dgvStudentSubject.SelectedRows[0];
 
-                this.id = selectedRows.Cells["id"].Value.ToString();
-                object subjectid = selectedRows.Cells["subject_id"].Value;
-                object admissionno = selectedRows.Cells["stu_admission_no"].Value;
+                this.id = selectedRow.Cells["id"].Value.ToString();
+                object subjectId = selectedRow.Cells["subject_id"].Value;
+                object admissionNo = selectedRow.Cells["stu_admission_no"].Value;
 
-
-                cmbSubjectId.SelectedValue = subjectid;
-                cmbAdmissionNo.SelectedValue = admissionno;
+                cmbSubjectId.SelectedValue = subjectId;
+                cmbAdmissionNo.SelectedValue = admissionNo;
             }
         }
 
@@ -328,6 +315,14 @@ namespace LMS
                 {
                     MessageBox.Show("Cannot open connection: " + ex.Message);
                 }
+            }
+        }
+
+        private void btnNew_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control == true && e.KeyCode == Keys.N)
+            {
+                btnNew.PerformClick();
             }
         }
     }
