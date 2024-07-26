@@ -93,7 +93,7 @@
             btnHome.BackgroundImage = (Image)resources.GetObject("btnHome.BackgroundImage");
             btnHome.BackgroundImageLayout = ImageLayout.Zoom;
             btnHome.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnHome.Location = new Point(24, 85);
+            btnHome.Location = new Point(54, 85);
             btnHome.Name = "btnHome";
             btnHome.Size = new Size(61, 48);
             btnHome.TabIndex = 117;
@@ -117,7 +117,7 @@
             btnNew.BackgroundImage = (Image)resources.GetObject("btnNew.BackgroundImage");
             btnNew.BackgroundImageLayout = ImageLayout.Zoom;
             btnNew.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnNew.Location = new Point(237, 85);
+            btnNew.Location = new Point(267, 85);
             btnNew.Name = "btnNew";
             btnNew.Size = new Size(61, 48);
             btnNew.TabIndex = 116;
@@ -162,7 +162,7 @@
             btnDelete.BackgroundImage = (Image)resources.GetObject("btnDelete.BackgroundImage");
             btnDelete.BackgroundImageLayout = ImageLayout.Zoom;
             btnDelete.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDelete.Location = new Point(166, 85);
+            btnDelete.Location = new Point(196, 85);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(61, 48);
             btnDelete.TabIndex = 110;
@@ -175,11 +175,11 @@
             dgvGradeSubject.AllowUserToDeleteRows = false;
             dgvGradeSubject.BackgroundColor = SystemColors.ControlLight;
             dgvGradeSubject.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvGradeSubject.Location = new Point(12, 194);
+            dgvGradeSubject.Location = new Point(14, 194);
             dgvGradeSubject.Name = "dgvGradeSubject";
             dgvGradeSubject.RowHeadersWidth = 51;
             dgvGradeSubject.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvGradeSubject.Size = new Size(527, 241);
+            dgvGradeSubject.Size = new Size(439, 241);
             dgvGradeSubject.TabIndex = 109;
             dgvGradeSubject.SelectionChanged += dgvGradeSubject_SelectionChanged;
             // 
@@ -188,7 +188,7 @@
             btnGetData.BackgroundImage = (Image)resources.GetObject("btnGetData.BackgroundImage");
             btnGetData.BackgroundImageLayout = ImageLayout.Zoom;
             btnGetData.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGetData.Location = new Point(95, 85);
+            btnGetData.Location = new Point(125, 85);
             btnGetData.Name = "btnGetData";
             btnGetData.Size = new Size(61, 48);
             btnGetData.TabIndex = 106;

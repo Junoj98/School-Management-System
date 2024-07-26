@@ -54,28 +54,29 @@ namespace LMS
             {
                 MessageBox.Show("Can not open connection ! ");
             }
+            refresh();
         }
 
         private void btnDataInsert_Click(object sender, EventArgs e)
         {
-            string connetionString = null;
-            SqlConnection cnn = new SqlConnection(connetionString);
-            connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
-            SqlCommand command;
-            string sql = "INSERT INTO [teachers] ([first_name],[last_name],[full_name],[dob],[gender],[nic],[email],[address],[telephone],[medium],[date_of_join])VALUES('Rogers','Mbappe','Rogers Mbappe','12-05-1978','Male','780803007v','kymb@gmail.com','Paris',0771222276,'English','21-04-2019')";
-            cnn = new SqlConnection(connetionString);
-            try
-            {
-                cnn.Open();
-                command = new SqlCommand(sql, cnn);
-                command.ExecuteNonQuery();
-                MessageBox.Show("Teacher details added successfully ! ");
-                cnn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Can not open connection ! ");
-            }
+            //string connetionString = null;
+            //SqlConnection cnn = new SqlConnection(connetionString);
+            //connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
+            //SqlCommand command;
+            //string sql = "INSERT INTO [teachers] ([first_name],[last_name],[full_name],[dob],[gender],[nic],[email],[address],[telephone],[medium],[date_of_join])VALUES('Rogers','Mbappe','Rogers Mbappe','12-05-1978','Male','780803007v','kymb@gmail.com','Paris',0771222276,'English','21-04-2019')";
+            //cnn = new SqlConnection(connetionString);
+            //try
+            //{
+            //    cnn.Open();
+            //    command = new SqlCommand(sql, cnn);
+            //    command.ExecuteNonQuery();
+            //    MessageBox.Show("Teacher details added successfully ! ");
+            //    cnn.Close();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Can not open connection ! ");
+            //}
         }
 
         private void btnGetData_Click(object sender, EventArgs e)
@@ -238,7 +239,7 @@ namespace LMS
                 txtEmail.Text = email;
                 txtNicNo.Text = nic;
                 txtTelephoneNo.Text = telephone;
-                txtMedium.Text = medium;
+                cmbMedium.Text = medium;
                 dtpDateofJoin.Text = dateofjoin;
                 txtAddress.Text = address;
             }
@@ -275,7 +276,7 @@ namespace LMS
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (txtFirstName.Text == "" || txtLastName.Text == "" || txtFullName.Text == "" || dtpDob.Text == "" || txtNicNo.Text == "" || txtEmail.Text == "" || txtAddress.Text == "" || txtTelephoneNo.Text == "" || txtMedium.Text == "" || dtpDateofJoin.Text == "" || (!rdoBtnMale.Checked && !rdoBtnFemale.Checked))
+            if (txtFirstName.Text == "" || txtLastName.Text == "" || txtFullName.Text == "" || dtpDob.Text == "" || txtNicNo.Text == "" || txtEmail.Text == "" || txtAddress.Text == "" || txtTelephoneNo.Text == "" || cmbMedium.Text == "" || dtpDateofJoin.Text == "" || (!rdoBtnMale.Checked && !rdoBtnFemale.Checked))
             {
                 MessageBox.Show("Please fill all the blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -296,7 +297,7 @@ namespace LMS
                 SqlConnection cnn = new SqlConnection(connetionString);
                 connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlCommand command;
-                string sql = "INSERT INTO [teachers] ([first_name],[last_name],[full_name],[gender],[dob],[nic],[email],[address],[telephone],[medium],[date_of_join],[created_at],[updated_at])VALUES('" + txtFirstName.Text + "','" + txtLastName.Text + "','" + txtFullName.Text + "','" + Gender + "','" + dtpDob.Text + "','" + txtNicNo.Text + "','" + txtEmail.Text + "','" + txtAddress.Text + "','" + txtTelephoneNo.Text + "','" + txtMedium.Text + "','" + dtpDateofJoin.Text + "','"+DateTime.Now+"','"+DateTime.Now+"')";
+                string sql = "INSERT INTO [teachers] ([first_name],[last_name],[full_name],[gender],[dob],[nic],[email],[address],[telephone],[medium],[date_of_join],[created_at])VALUES('" + txtFirstName.Text + "','" + txtLastName.Text + "','" + txtFullName.Text + "','" + Gender + "','" + dtpDob.Value.ToString("yyyy-MM-dd") + "','" + txtNicNo.Text + "','" + txtEmail.Text + "','" + txtAddress.Text + "','" + txtTelephoneNo.Text + "','" + cmbMedium.Text + "','" + dtpDateofJoin.Value.ToString("yyyy-MM-dd") + "','"+DateTime.Now+"')";
                 cnn = new SqlConnection(connetionString);
                 try
                 {
@@ -326,7 +327,7 @@ namespace LMS
                 SqlConnection cnn = new SqlConnection(connetionString);
                 connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlCommand command;
-                string sql = "UPDATE [teachers] SET [first_name]='" + txtFirstName.Text + "',[last_name]='" + txtLastName.Text + "',[full_name]='" + txtFullName.Text + "',[gender] = '" + Gender + "',[dob]='" + dtpDob.Text + "',[nic]='" + txtNicNo.Text + "',[email]='" + txtEmail.Text + "',[address]='" + txtAddress.Text + "',[telephone]='" + txtTelephoneNo.Text + "',[medium]='" + txtMedium.Text + "',[date_of_join]='" + dtpDateofJoin.Text + "',[updated_at] = '" + DateTime.Now + "' WHERE [id]='" + this.id + "'";
+                string sql = "UPDATE [teachers] SET [first_name]='" + txtFirstName.Text + "',[last_name]='" + txtLastName.Text + "',[full_name]='" + txtFullName.Text + "',[gender] = '" + Gender + "',[dob]='" + dtpDob.Text + "',[nic]='" + txtNicNo.Text + "',[email]='" + txtEmail.Text + "',[address]='" + txtAddress.Text + "',[telephone]='" + txtTelephoneNo.Text + "',[medium]='" + cmbMedium.Text + "',[date_of_join]='" + dtpDateofJoin.Text + "',[updated_at] = '" + DateTime.Now + "' WHERE [id]='" + this.id + "'";
                 cnn = new SqlConnection(connetionString);
                 try
                 {
@@ -353,7 +354,7 @@ namespace LMS
             txtEmail.Text = null;
             txtNicNo.Text = null;
             txtTelephoneNo.Text = null;
-            txtMedium.Text = null;
+            cmbMedium.Text = null;
             dtpDateofJoin.Text = null;
             txtAddress.Text = null;
             rdoBtnMale.Checked = false;
@@ -370,6 +371,45 @@ namespace LMS
         private void txtFullName_Enter(object sender, EventArgs e)
         {
             txtFullName.Text = txtFirstName.Text + " " + txtLastName.Text;
+        }
+
+        private void refresh()
+        {
+            string connetionString = null;
+            connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
+            SqlConnection cnn = new SqlConnection(connetionString);
+            SqlCommand command;
+            string sql = "select * from teachers";
+
+            try
+            {
+                cnn.Open();
+                command = new SqlCommand(sql, cnn);
+                SqlDataReader sqlReader = command.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(sqlReader);
+                dgvTeacher.DataSource = dt;
+                SetColumnHeaders();
+                sqlReader.Close();
+                command.Dispose();
+                cnn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not open connection ! ");
+            }
+            txtFirstName.Text = null;
+            txtLastName.Text = null;
+            txtFullName.Text = null;
+            dtpDob.Text = null;
+            txtEmail.Text = null;
+            txtNicNo.Text = null;
+            txtTelephoneNo.Text = null;
+            cmbMedium.SelectedIndex = -1;
+            dtpDateofJoin.Text = null;
+            txtAddress.Text = null;
+            rdoBtnMale.Checked = false;
+            rdoBtnFemale.Checked = false;
         }
     }
 }

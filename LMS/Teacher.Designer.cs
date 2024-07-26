@@ -38,10 +38,10 @@
             btnHome = new Button();
             btnUpdate = new Button();
             groupBox3 = new GroupBox();
+            cmbMedium = new ComboBox();
             label5 = new Label();
             dtpDateofJoin = new DateTimePicker();
             label12 = new Label();
-            txtMedium = new TextBox();
             label13 = new Label();
             txtAddress = new TextBox();
             label8 = new Label();
@@ -176,10 +176,10 @@
             // groupBox3
             // 
             groupBox3.BackColor = Color.Transparent;
+            groupBox3.Controls.Add(cmbMedium);
             groupBox3.Controls.Add(label5);
             groupBox3.Controls.Add(dtpDateofJoin);
             groupBox3.Controls.Add(label12);
-            groupBox3.Controls.Add(txtMedium);
             groupBox3.Controls.Add(label13);
             groupBox3.Controls.Add(txtAddress);
             groupBox3.Controls.Add(label8);
@@ -208,6 +208,17 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Personal Details";
             // 
+            // cmbMedium
+            // 
+            cmbMedium.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbMedium.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cmbMedium.FormattingEnabled = true;
+            cmbMedium.Items.AddRange(new object[] { "Tamil", "English", "Sinhala" });
+            cmbMedium.Location = new Point(540, 239);
+            cmbMedium.Name = "cmbMedium";
+            cmbMedium.Size = new Size(224, 27);
+            cmbMedium.TabIndex = 46;
+            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -234,14 +245,6 @@
             label12.Size = new Size(118, 41);
             label12.TabIndex = 43;
             label12.Text = "Date of Join";
-            // 
-            // txtMedium
-            // 
-            txtMedium.Font = new Font("Times New Roman", 10.8F);
-            txtMedium.Location = new Point(540, 243);
-            txtMedium.Name = "txtMedium";
-            txtMedium.Size = new Size(224, 28);
-            txtMedium.TabIndex = 42;
             // 
             // label13
             // 
@@ -518,7 +521,6 @@
         private GroupBox groupBox3;
         private DateTimePicker dtpDateofJoin;
         private Label label12;
-        private TextBox txtMedium;
         private Label label13;
         private TextBox txtAddress;
         private Label label8;
@@ -547,5 +549,6 @@
         private Label label5;
         private Button btnNew;
         private Button btnClear;
+        private ComboBox cmbMedium;
     }
 }

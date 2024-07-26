@@ -197,6 +197,7 @@
             ClientSize = new Size(827, 489);
             Controls.Add(gradientPanel1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";

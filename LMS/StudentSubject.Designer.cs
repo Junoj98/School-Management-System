@@ -93,7 +93,7 @@
             btnHome.BackgroundImage = (Image)resources.GetObject("btnHome.BackgroundImage");
             btnHome.BackgroundImageLayout = ImageLayout.Zoom;
             btnHome.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnHome.Location = new Point(25, 103);
+            btnHome.Location = new Point(69, 103);
             btnHome.Name = "btnHome";
             btnHome.Size = new Size(61, 48);
             btnHome.TabIndex = 131;
@@ -117,7 +117,7 @@
             btnNew.BackgroundImage = (Image)resources.GetObject("btnNew.BackgroundImage");
             btnNew.BackgroundImageLayout = ImageLayout.Zoom;
             btnNew.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnNew.Location = new Point(238, 103);
+            btnNew.Location = new Point(282, 103);
             btnNew.Name = "btnNew";
             btnNew.Size = new Size(61, 48);
             btnNew.TabIndex = 130;
@@ -162,7 +162,7 @@
             btnDelete.BackgroundImage = (Image)resources.GetObject("btnDelete.BackgroundImage");
             btnDelete.BackgroundImageLayout = ImageLayout.Zoom;
             btnDelete.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDelete.Location = new Point(167, 103);
+            btnDelete.Location = new Point(211, 103);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(61, 48);
             btnDelete.TabIndex = 126;
@@ -175,11 +175,11 @@
             dgvStudentSubject.AllowUserToDeleteRows = false;
             dgvStudentSubject.BackgroundColor = SystemColors.ControlLight;
             dgvStudentSubject.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvStudentSubject.Location = new Point(13, 212);
+            dgvStudentSubject.Location = new Point(27, 212);
             dgvStudentSubject.Name = "dgvStudentSubject";
             dgvStudentSubject.RowHeadersWidth = 51;
             dgvStudentSubject.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvStudentSubject.Size = new Size(527, 241);
+            dgvStudentSubject.Size = new Size(433, 241);
             dgvStudentSubject.TabIndex = 125;
             dgvStudentSubject.SelectionChanged += dgvStudentSubject_SelectionChanged;
             // 
@@ -188,7 +188,7 @@
             btnGetData.BackgroundImage = (Image)resources.GetObject("btnGetData.BackgroundImage");
             btnGetData.BackgroundImageLayout = ImageLayout.Zoom;
             btnGetData.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGetData.Location = new Point(96, 103);
+            btnGetData.Location = new Point(140, 103);
             btnGetData.Name = "btnGetData";
             btnGetData.Size = new Size(61, 48);
             btnGetData.TabIndex = 124;
