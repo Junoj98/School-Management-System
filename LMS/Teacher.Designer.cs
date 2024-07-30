@@ -316,6 +316,7 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(224, 28);
             txtEmail.TabIndex = 32;
+            txtEmail.Validating += txtEmail_Validating;
             // 
             // dtpDob
             // 

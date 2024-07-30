@@ -265,6 +265,8 @@ namespace LMS
             {
                 MessageBox.Show("Can not open connection ! ");
             }
+
+            refresh();
         }
 
         private void btnNew_KeyDown(object sender, KeyEventArgs e)
@@ -273,6 +275,35 @@ namespace LMS
             {
                 btnNew.PerformClick();
             }
+        }
+
+        private void refresh()
+        {
+            string connetionString = null;
+            connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
+            SqlConnection cnn = new SqlConnection(connetionString);
+            SqlCommand command;
+            string sql = "select * from grade_subjects";
+
+            try
+            {
+                cnn.Open();
+                command = new SqlCommand(sql, cnn);
+                SqlDataReader sqlReader = command.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(sqlReader);
+                dgvGradeSubject.DataSource = dt;
+                
+                sqlReader.Close();
+                command.Dispose();
+                cnn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not open connection ! ");
+            }
+            cmbGradeId.SelectedIndex = -1;
+            cmbSubjectId.SelectedIndex = -1;
         }
     }
 }

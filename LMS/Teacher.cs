@@ -297,7 +297,7 @@ namespace LMS
                 SqlConnection cnn = new SqlConnection(connetionString);
                 connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlCommand command;
-                string sql = "INSERT INTO [teachers] ([first_name],[last_name],[full_name],[gender],[dob],[nic],[email],[address],[telephone],[medium],[date_of_join],[created_at])VALUES('" + txtFirstName.Text + "','" + txtLastName.Text + "','" + txtFullName.Text + "','" + Gender + "','" + dtpDob.Value.ToString("yyyy-MM-dd") + "','" + txtNicNo.Text + "','" + txtEmail.Text + "','" + txtAddress.Text + "','" + txtTelephoneNo.Text + "','" + cmbMedium.Text + "','" + dtpDateofJoin.Value.ToString("yyyy-MM-dd") + "','"+DateTime.Now+"')";
+                string sql = "INSERT INTO [teachers] ([first_name],[last_name],[full_name],[gender],[dob],[nic],[email],[address],[telephone],[medium],[date_of_join],[created_at])VALUES('" + txtFirstName.Text + "','" + txtLastName.Text + "','" + txtFullName.Text + "','" + Gender + "','" + dtpDob.Value.ToString() + "','" + txtNicNo.Text + "','" + txtEmail.Text + "','" + txtAddress.Text + "','" + txtTelephoneNo.Text + "','" + cmbMedium.Text + "','" + dtpDateofJoin.Value.ToString() + "','" + DateTime.Now.ToString() + "')";
                 cnn = new SqlConnection(connetionString);
                 try
                 {
@@ -309,8 +309,12 @@ namespace LMS
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Can not open connection ! ");
+                    MessageBox.Show("Can not open Connection !");
                 }
+                //catch (Exception ex)
+                //{
+                //    MessageBox.Show(ex.Message);
+                //}
             }
             else
             {
@@ -327,7 +331,7 @@ namespace LMS
                 SqlConnection cnn = new SqlConnection(connetionString);
                 connetionString = "Server=JUNO\\SQLEXPRESS;Database=lmsDb;Trusted_Connection=True";
                 SqlCommand command;
-                string sql = "UPDATE [teachers] SET [first_name]='" + txtFirstName.Text + "',[last_name]='" + txtLastName.Text + "',[full_name]='" + txtFullName.Text + "',[gender] = '" + Gender + "',[dob]='" + dtpDob.Text + "',[nic]='" + txtNicNo.Text + "',[email]='" + txtEmail.Text + "',[address]='" + txtAddress.Text + "',[telephone]='" + txtTelephoneNo.Text + "',[medium]='" + cmbMedium.Text + "',[date_of_join]='" + dtpDateofJoin.Text + "',[updated_at] = '" + DateTime.Now + "' WHERE [id]='" + this.id + "'";
+                string sql = "UPDATE [teachers] SET [first_name]='" + txtFirstName.Text + "',[last_name]='" + txtLastName.Text + "',[full_name]='" + txtFullName.Text + "',[gender] = '" + Gender + "',[dob]='" + dtpDob.Value.ToString() + "',[nic]='" + txtNicNo.Text + "',[email]='" + txtEmail.Text + "',[address]='" + txtAddress.Text + "',[telephone]='" + txtTelephoneNo.Text + "',[medium]='" + cmbMedium.Text + "',[date_of_join]='" + dtpDateofJoin.Value.ToString() + "',[updated_at] = '" + DateTime.Now.ToString() + "' WHERE [id]='" + this.id + "'";
                 cnn = new SqlConnection(connetionString);
                 try
                 {
@@ -339,7 +343,7 @@ namespace LMS
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Can not open connection ! ");
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -410,6 +414,21 @@ namespace LMS
             txtAddress.Text = null;
             rdoBtnMale.Checked = false;
             rdoBtnFemale.Checked = false;
+        }
+
+        private void txtEmail_Validating(object sender, CancelEventArgs e)
+        {
+            System.Text.RegularExpressions.Regex rEmail = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
+
+            if (txtEmail.Text.Length > 0 && txtEmail.Text.Trim().Length != 0)
+            {
+                if (!rEmail.IsMatch(txtEmail.Text.Trim()))
+                {
+                    MessageBox.Show("check email id",  "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtEmail.SelectAll();
+                    e.Cancel = true;
+                }
+            }
         }
     }
 }

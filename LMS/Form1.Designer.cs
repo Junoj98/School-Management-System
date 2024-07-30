@@ -89,10 +89,10 @@
             // btnStudentSubject
             // 
             btnStudentSubject.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnStudentSubject.Location = new Point(340, 263);
+            btnStudentSubject.Location = new Point(496, 263);
             btnStudentSubject.Name = "btnStudentSubject";
-            btnStudentSubject.Size = new Size(172, 84);
-            btnStudentSubject.TabIndex = 3;
+            btnStudentSubject.Size = new Size(109, 84);
+            btnStudentSubject.TabIndex = 5;
             btnStudentSubject.Text = "Student Subject";
             btnStudentSubject.UseVisualStyleBackColor = true;
             btnStudentSubject.Click += btnStudentSubject_Click;
@@ -102,19 +102,19 @@
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(12, 99);
+            pictureBox1.Location = new Point(13, 103);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(258, 239);
+            pictureBox1.Size = new Size(335, 301);
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
             // btnSubject
             // 
             btnSubject.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            btnSubject.Location = new Point(542, 173);
+            btnSubject.Location = new Point(617, 173);
             btnSubject.Name = "btnSubject";
             btnSubject.Size = new Size(109, 84);
-            btnSubject.TabIndex = 1;
+            btnSubject.TabIndex = 3;
             btnSubject.Text = "Subject";
             btnSubject.UseVisualStyleBackColor = true;
             btnSubject.Click += btnSubject_Click;
@@ -122,10 +122,10 @@
             // btnGrade
             // 
             btnGrade.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            btnGrade.Location = new Point(663, 173);
+            btnGrade.Location = new Point(375, 263);
             btnGrade.Name = "btnGrade";
             btnGrade.Size = new Size(109, 84);
-            btnGrade.TabIndex = 1;
+            btnGrade.TabIndex = 4;
             btnGrade.Text = "Grade";
             btnGrade.UseVisualStyleBackColor = true;
             btnGrade.Click += btnGrade_Click;
@@ -133,10 +133,10 @@
             // btnTeacher
             // 
             btnTeacher.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            btnTeacher.Location = new Point(421, 173);
+            btnTeacher.Location = new Point(496, 173);
             btnTeacher.Name = "btnTeacher";
             btnTeacher.Size = new Size(109, 84);
-            btnTeacher.TabIndex = 1;
+            btnTeacher.TabIndex = 2;
             btnTeacher.Text = "Teachers";
             btnTeacher.UseVisualStyleBackColor = true;
             btnTeacher.Click += btnTeacher_Click;
@@ -145,10 +145,10 @@
             // 
             btnGradeSubject.BackColor = SystemColors.Control;
             btnGradeSubject.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            btnGradeSubject.Location = new Point(566, 263);
+            btnGradeSubject.Location = new Point(617, 263);
             btnGradeSubject.Name = "btnGradeSubject";
-            btnGradeSubject.Size = new Size(172, 84);
-            btnGradeSubject.TabIndex = 1;
+            btnGradeSubject.Size = new Size(109, 84);
+            btnGradeSubject.TabIndex = 6;
             btnGradeSubject.Text = "Grade Subject";
             btnGradeSubject.UseVisualStyleBackColor = false;
             btnGradeSubject.Click += btnGradeSubject_Click;
@@ -157,7 +157,7 @@
             // 
             btnStudent.BackColor = SystemColors.Control;
             btnStudent.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            btnStudent.Location = new Point(300, 173);
+            btnStudent.Location = new Point(375, 173);
             btnStudent.Name = "btnStudent";
             btnStudent.Size = new Size(109, 84);
             btnStudent.TabIndex = 1;
